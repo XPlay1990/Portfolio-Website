@@ -1,0 +1,9 @@
+#aboutMeBackground {
+    /*height: calc(100vh - 48px);*/
+    height: 100vh;
+    background: url(../resources/aboutMe/shutterstock_1091763119_flipped.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
