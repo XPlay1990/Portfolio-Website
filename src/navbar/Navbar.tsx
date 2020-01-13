@@ -10,6 +10,7 @@ import xingIcon from "../resources/contact/Xing.png";
 import githubIcon from "../resources/contact/Github.png";
 import LinkIcon from "@material-ui/icons/Link";
 import {makeStyles} from "@material-ui/core/styles";
+import qdIcon from "../resources/navbar/qd_software.png"
 
 export const Navbar: React.FC = () => {
     const drawerWidth = 240;
@@ -128,7 +129,7 @@ export const Navbar: React.FC = () => {
                 >
                     <Link href={'http://www.qd-software.de'} target="_blank" rel="noopener noreferrer">
                         <ListItem button key='QD Software'>
-                            <ListItemIcon><LinkIcon/></ListItemIcon>
+                            <ListItemIcon><img className={classes.listItemIcon} src={qdIcon} alt={"qd software"}/></ListItemIcon>
                             <ListItemText className={classes.ListItemText} primary='QD Software'/>
                         </ListItem>
                     </Link>
