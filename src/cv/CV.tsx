@@ -25,7 +25,7 @@ export const CV: React.FC = () => {
         // } else {
         //     return 600
         // }
-        return (window.innerWidth - 240) * 0.4
+        return (window.innerWidth - 240) * 0.6
     }
 
     function onDocumentLoadSuccess(pdf: PDFDocumentProxy): void {
