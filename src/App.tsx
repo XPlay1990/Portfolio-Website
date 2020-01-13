@@ -8,6 +8,7 @@ import {pdfjs} from 'react-pdf';
 import {Navbar} from "./navbar/Navbar";
 import {CV} from './cv/CV';
 import {CssBaseline} from "@material-ui/core";
+import {Contact} from "./contact/Contact";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -38,6 +39,7 @@ const App: React.FC = () => {
                 <AboutMe/>
                 <CV/>
                 <Projects/>
+                <Contact/>
             </div>
         </ThemeProvider>
     );

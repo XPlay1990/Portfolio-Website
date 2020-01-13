@@ -77,7 +77,9 @@ export const Navbar: React.FC = () => {
                         <ListItemIcon><WorkIcon/></ListItemIcon>
                         <ListItemText className={classes.ListItemText} primary='Projekte'/>
                     </ListItem>
-                    <ListItem button key='Kontakt'>
+                    <ListItem button key='Kontakt' onClick={() => {
+                        jumpToDivId('Contact')
+                    }}>
                         <ListItemIcon><MailIcon/></ListItemIcon>
                         <ListItemText className={classes.ListItemText} primary='Kontakt'/>
                     </ListItem>
@@ -92,7 +94,6 @@ export const Navbar: React.FC = () => {
                 >
                     <Box display={'flex'} flexDirection={'column'} margin={'auto'}>
                         <Link href={'https://www.linkedin.com/in/jan-adamczyk/'} target="_blank"
-                              component="button"
                               rel="noopener noreferrer">
                             <ListItem button key='LinkedIn'>
                                 <ListItemIcon><img className={classes.listItemIcon} src={linkedInIcon}
