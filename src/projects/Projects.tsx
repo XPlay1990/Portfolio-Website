@@ -25,6 +25,11 @@ export const Projects: React.FC = () => {
             paddingTop: '56.25%', // 16:9
             padding: '20px'
         },
+        GitHubmedia: {
+            height: 0,
+            paddingTop: '100%', // 16:9
+            padding: '20px'
+        },
     }));
 
     const classes = useStyles();
@@ -124,6 +129,27 @@ export const Projects: React.FC = () => {
                         </CardContent>
                         <CardActions disableSpacing>
                             <Link href="https://github.com/XPlay1990/Comport-Tool" target="_blank"
+                                  rel="noopener noreferrer">
+                                <IconButton aria-label="link">
+                                    <LinkIcon/>
+                                </IconButton>
+                            </Link>
+                        </CardActions>
+                    </Card>
+                </Grid>
+
+                <Grid item md={6}>
+                    <Card className={classes.card}>
+                        <CardHeader
+                            title="GitHub"
+                        />
+                        <CardContent>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                Und viele Mehr!
+                            </Typography>
+                        </CardContent>
+                        <CardActions disableSpacing>
+                            <Link href="https://github.com/XPlay1990/" target="_blank"
                                   rel="noopener noreferrer">
                                 <IconButton aria-label="link">
                                     <LinkIcon/>
