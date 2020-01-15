@@ -1,11 +1,13 @@
 import React, {useState} from "react";
 import {Box, Card, IconButton, Tooltip} from "@material-ui/core";
 import {Document, Page} from "react-pdf";
-import * as Lebenslauf from "../resources/cv/Lebenslauf.pdf";
+import Lebenslauf from "../resources/cv/Lebenslauf.pdf";
+import CV_en from "../resources/cv/CV_en.pdf";
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import "./cv.css"
 import Typography from "@material-ui/core/Typography";
+import i18n from "i18next";
 
 
 interface PDFDocumentProxy {
@@ -65,22 +67,43 @@ export const CV: React.FC = () => {
                     </Tooltip>
                 </Box>
 
-                <div>
-                    <Document
-                        file={Lebenslauf}
-                        onLoadSuccess={onDocumentLoadSuccess}
-                    >
-                        <Page
-                            pageNumber={pageNumber}
-                            // height={window.screen.height-48}
-                            width={getContainerWidth()}
-                            renderAnnotationLayer={false}
-                        />
-                    </Document>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        Seite {pageNumber} von {pagesTotal}
-                    </Typography>
-                </div>
+                {
+                    i18n.language === 'de' || i18n.language === 'de-DE' ? (
+                        <div>
+                            <Document
+                                file={Lebenslauf}
+                                onLoadSuccess={onDocumentLoadSuccess}
+                            >
+                                <Page
+                                    pageNumber={pageNumber}
+                                    // height={window.screen.height-48}
+                                    width={getContainerWidth()}
+                                    renderAnnotationLayer={false}
+                                />
+                            </Document>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                Seite {pageNumber} von {pagesTotal}
+                            </Typography>
+                        </div>
+                    ) : (
+                        <div>
+                            <Document
+                                file={CV_en}
+                                onLoadSuccess={onDocumentLoadSuccess}
+                            >
+                                <Page
+                                    pageNumber={pageNumber}
+                                    // height={window.screen.height-48}
+                                    width={getContainerWidth()}
+                                    renderAnnotationLayer={false}
+                                />
+                            </Document>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                Page {pageNumber} of {pagesTotal}
+                            </Typography>
+                        </div>
+                    )
+                }
             </Card>
         </div>
     )
