@@ -1,0 +1,24 @@
+{
+  "navbar": {
+    "aboutme": "About me",
+    "cv": "CV",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "aboutme": {
+    "text": "Brief summary: Software developer who is always looking to learn and to improve! <br/> As a fullstack web developer I have expierence in Java/Kotlin, JSP/React, MySQL and Linux. I also have knowledge in the embedded world (C, STM32, Cypress, ESP32). <br/><br/> Below you can find my contact data and will find out more about me and my projects. <br/><br/> I look forward to hearing from you! <br/> Jan"
+  },
+  "projects": {
+    "title": "Projects",
+    "qd": {
+      "text": "Webportal to manage so called \"EDI-Connections\" with statistics, user management, permission management."
+    },
+    "radar": {
+      "text": "3D & 2D visualization of incoming Comport/TCPIP data with high amount of datapoints (>1000 points every 10 ms). Above screenshot shows a recognized finger by a radar system. Developed with requirements of PAS Deutschland GmbH & Dieter Genschow(Silicon Radar GmbH)."
+    },
+    "comporttool": {
+      "text": "Visualization of incoming COM-Port/TCPIP data. Lots of functions (like selecting channels, time measrurements, pause feature without data loss, renaming of channels, change of history length, ...) make deep analysis of data possible. Is used at PAS Deutschland GmbH as the standard tool to optimize touch solutions."
+    },
+    "additional": "And many more!"
+  }
+}

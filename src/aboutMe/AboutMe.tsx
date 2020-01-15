@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Bewerbungsbild from "../resources/profile_web.jpg";
 import './AboutMe.css'
+import {Trans} from "react-i18next";
 
 export const AboutMe: React.FC = () => {
     const useStyles = makeStyles(theme => ({
@@ -40,18 +41,7 @@ export const AboutMe: React.FC = () => {
                 />
                 <CardContent>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        Software Entwickler mit dem Drang sich stets zu verbessern.
-                        <br/>
-                        Ich besitze Erfahrung im Fullstack Webdevelopment (Java/Kotlin, JSP/React, MySQL, Linux), sowie
-                        im Embedded Bereich (STM32, Cypress, ESP32).
-                        <br/>
-                        <br/>
-                        Weiter unten können Sie mehr über mich Erfahren, oder Kontakt zu mir aufnehmen.
-                        <br/>
-                        <br/>
-                        Ich freue mich auf Sie!
-                        <br/>
-                        Jan
+                        <Trans i18nKey={`aboutme.text`}/>
                     </Typography>
                 </CardContent>
             </Card>

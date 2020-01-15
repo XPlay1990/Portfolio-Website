@@ -1,5 +1,5 @@
-import React from "react";
-import {Box, Drawer, Link, List, ListItem, ListItemIcon, ListItemText, ListSubheader} from "@material-ui/core";
+import React, {useState} from 'react';
+import {Box, Drawer, Link, List, ListItem, ListItemIcon, ListItemText, ListSubheader, Tooltip} from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import PersonIcon from "@material-ui/icons/Person";
 import DescriptionIcon from "@material-ui/icons/Description";
@@ -11,8 +11,12 @@ import githubIcon from "../resources/contact/Github.png";
 import LinkIcon from "@material-ui/icons/Link";
 import {makeStyles} from "@material-ui/core/styles";
 import qdIcon from "../resources/navbar/qd_software.png"
+import {ToggleButton, ToggleButtonGroup} from "@material-ui/lab";
+import i18n from "i18next";
+import {Trans} from "react-i18next";
 
 export const Navbar: React.FC = () => {
+    const [language, setLanguage] = useState(i18n.language);
     const drawerWidth = 240;
 
     const useStyles = makeStyles(theme => ({
@@ -39,11 +43,15 @@ export const Navbar: React.FC = () => {
 
     function jumpToDivId(divId: string) {
         const element = document.getElementById(divId);
-        console.log(divId)
-        console.log(element)
         if (element) {
             element.scrollIntoView()
         }
+    }
+
+    function changeLanguageToggle(event: any, selectedLanguage: string) {
+        setLanguage(selectedLanguage);
+        i18n.changeLanguage(selectedLanguage);
+        window.location.reload()
     }
 
     return (
@@ -64,25 +72,25 @@ export const Navbar: React.FC = () => {
                         jumpToDivId('aboutMeBackground')
                     }}>
                         <ListItemIcon><PersonIcon/></ListItemIcon>
-                        <ListItemText className={classes.ListItemText} primary='Über mich'/>
+                        <ListItemText className={classes.ListItemText} primary={<Trans i18nKey={`navbar.aboutme`}/>}/>
                     </ListItem>
                     <ListItem button key='Lebenslauf' onClick={() => {
                         jumpToDivId('CV')
                     }}>
                         <ListItemIcon><DescriptionIcon/></ListItemIcon>
-                        <ListItemText className={classes.ListItemText} primary='Lebenslauf'/>
+                        <ListItemText className={classes.ListItemText} primary={<Trans i18nKey={`navbar.cv`}/>}/>
                     </ListItem>
                     <ListItem button key='Projekte' onClick={() => {
                         jumpToDivId('Projects')
                     }}>
                         <ListItemIcon><WorkIcon/></ListItemIcon>
-                        <ListItemText className={classes.ListItemText} primary='Projekte'/>
+                        <ListItemText className={classes.ListItemText} primary={<Trans i18nKey={`navbar.projects`}/>}/>
                     </ListItem>
                     <ListItem button key='Kontakt' onClick={() => {
                         jumpToDivId('Contact')
                     }}>
                         <ListItemIcon><MailIcon/></ListItemIcon>
-                        <ListItemText className={classes.ListItemText} primary='Kontakt'/>
+                        <ListItemText className={classes.ListItemText} primary={<Trans i18nKey={`navbar.contact`}/>}/>
                     </ListItem>
                 </List>
                 <Divider/>
@@ -129,7 +137,8 @@ export const Navbar: React.FC = () => {
                 >
                     <Link href={'http://www.qd-software.de'} target="_blank" rel="noopener noreferrer">
                         <ListItem button key='QD Software'>
-                            <ListItemIcon><img className={classes.listItemIcon} src={qdIcon} alt={"qd software"}/></ListItemIcon>
+                            <ListItemIcon><img className={classes.listItemIcon} src={qdIcon}
+                                               alt={"qd software"}/></ListItemIcon>
                             <ListItemText className={classes.ListItemText} primary='QD Software'/>
                         </ListItem>
                     </Link>
@@ -146,6 +155,25 @@ export const Navbar: React.FC = () => {
                         </ListItem>
                     </Link>
                 </List>
+                <Divider/>
+                <Tooltip title={"Language"}>
+                    <ToggleButtonGroup
+                        value={language}
+                        exclusive
+                        size="small"
+                        onChange={changeLanguageToggle}
+                        aria-label="text alignment"
+                        className="ToggleButtonGroup"
+                        style={{margin:"20px auto"}}
+                    >
+                        <ToggleButton value='de' aria-label="centered">
+                            de
+                        </ToggleButton>
+                        <ToggleButton value='en' aria-label="centered">
+                            en
+                        </ToggleButton>
+                    </ToggleButtonGroup>
+                </Tooltip>
             </Drawer>
         </nav>
     )

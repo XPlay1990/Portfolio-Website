@@ -12,6 +12,7 @@ import ComportTool from "../resources/projects/ComportTool.png";
 import PyQtGraph from "../resources/projects/PyQtGraph_3D.png";
 import QDPortal from "../resources/projects/QD_Portal.png";
 import {Grid, Link} from "@material-ui/core";
+import {Trans} from "react-i18next";
 
 export const Projects: React.FC = () => {
     const useStyles = makeStyles(theme => ({
@@ -37,7 +38,7 @@ export const Projects: React.FC = () => {
     return (
         <div id="Projects">
             <Typography variant="h2" color="textPrimary" align={"center"}>
-                Projekte
+                <Trans i18nKey={`projects.title`}/>
             </Typography>
             <Grid container spacing={1} style={{margin: 'auto', width: '80%'}}>
                 <Grid item md={6}>
@@ -56,9 +57,7 @@ export const Projects: React.FC = () => {
                         <CardContent>
                             <Typography variant="body2" color="textSecondary" component="p">
                                 <Link href="http://qd-software.de">www.qd-software.de</Link> <br/>
-                                Seite zur Verwaltung sogenannter "EDI-Verbindungen" inklusive Statistiken,
-                                Nutzerverwaltung,
-                                Rechte-System.
+                                <Trans i18nKey={`projects.qd.text`}/>
                             </Typography>
                         </CardContent>
                         <CardActions disableSpacing>
@@ -86,12 +85,7 @@ export const Projects: React.FC = () => {
                         </Link>
                         <CardContent>
                             <Typography variant="body2" color="textSecondary" component="p">
-                                3D & 2D Darstellung eingehender Daten über Comport/TCPIP Socket mit extrem hoher Anzahl
-                                von
-                                Datenpunkten (>1000 Punkte alle 10 ms).
-                                Obiger Screenshot zeigt einen erkannten Finger im Radarsystem.
-                                Wurde nach Anforderungen der PAS Deutschland GmbH & Dieter Genschow(Silicon Radar GmbH)
-                                entwickelt.
+                                <Trans i18nKey={`projects.radar.text`}/>
                             </Typography>
                         </CardContent>
                         <CardActions disableSpacing>
@@ -120,11 +114,7 @@ export const Projects: React.FC = () => {
                         </Link>
                         <CardContent>
                             <Typography variant="body2" color="textSecondary" component="p">
-                                Tool zur live Auswertung eingehender Daten über den COM-Port/TCPIP Socket. Diverse extra
-                                Funktionen wie einzelne Kanalauswahl, Zeitmessungen,
-                                Pause-Möglichkeit, umbennen von Kanälen und Sichtbereich vereinfachen die Analyse der
-                                eingehenden Daten.
-                                Wird bei PAS Deutschland GmbH zur Optimierung des Touch-Systems genutzt.
+                                <Trans i18nKey={`projects.comporttool.text`}/>
                             </Typography>
                         </CardContent>
                         <CardActions disableSpacing>
@@ -145,7 +135,7 @@ export const Projects: React.FC = () => {
                         />
                         <CardContent>
                             <Typography variant="body2" color="textSecondary" component="p">
-                                Und viele Mehr!
+                                <Trans i18nKey={`projects.additional`}/>
                             </Typography>
                         </CardContent>
                         <CardActions disableSpacing>
