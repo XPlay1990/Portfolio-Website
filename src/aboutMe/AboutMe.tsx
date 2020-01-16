@@ -33,6 +33,7 @@ export const AboutMe: React.FC = () => {
             <Card className={classes.card}>
                 <CardHeader
                     title="Jan Adamczyk"
+                    subheader={<Trans i18nKey={`aboutme.subheader`}/>}
                 />
                 <CardMedia
                     className={classes.media}
