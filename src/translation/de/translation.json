@@ -12,7 +12,7 @@
   "projects": {
     "title": "Projekte",
     "qd": {
-      "text": "Seite zur Verwaltung sogenannter \"EDI-Verbindungen\" inklusive Statistiken, Nutzerverwaltung, Rechte-System."
+      "text": "Seite zur Verwaltung sogenannter \"EDI-Verbindungen\" inklusive Statistiken, Nutzerverwaltung, Rechte-System, Excel-Export und vieles mehr."
     },
     "radar": {
       "text": "3D & 2D Darstellung eingehender Daten über Comport/TCPIP Socket mit extrem hoher Anzahl von Datenpunkten (>1000 Punkte alle 10 ms). Obiger Screenshot zeigt einen erkannten Finger im Radarsystem. Wurde nach Anforderungen der PAS Deutschland GmbH & Dieter Genschow(Silicon Radar GmbH) entwickelt."

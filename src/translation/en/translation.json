@@ -12,7 +12,7 @@
   "projects": {
     "title": "Projects",
     "qd": {
-      "text": "Webportal to manage so called \"EDI-Connections\" with statistics, user management, permission management."
+      "text": "Webportal to manage so called \"EDI-Connections\" with statistics, user management, permission management, Excel export and much more."
     },
     "radar": {
       "text": "3D & 2D visualization of incoming Comport/TCPIP data with high amount of datapoints (>1000 points every 10 ms). Above screenshot shows a recognized finger by a radar system. Developed with requirements of PAS Deutschland GmbH & Dieter Genschow(Silicon Radar GmbH)."
