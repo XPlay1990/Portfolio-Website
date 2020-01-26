@@ -10,27 +10,19 @@ import './AboutMe.css'
 import {Trans} from "react-i18next";
 
 export const AboutMe: React.FC = () => {
-    const useStyles = makeStyles(theme => ({
-        card: {
-            display: 'flex',
-            flexDirection: 'column',
-            // height: '50%',
-            width: '40%',
-            marginRight: 0,
-            marginLeft: 'auto'
-        },
+    const useStyles = makeStyles({
         media: {
             height: 0,
             paddingTop: '56.25%', // 16:9
             padding: '20px'
         },
-    }));
+    });
 
     const classes = useStyles();
 
     return (
         <div id="aboutMeBackground">
-            <Card className={classes.card}>
+            <Card className="aboutMeCard">
                 <CardHeader
                     title="Jan Adamczyk"
                     subheader={<Trans i18nKey={`aboutme.subheader`}/>}
@@ -41,7 +33,7 @@ export const AboutMe: React.FC = () => {
                     title="Paella dish"
                 />
                 <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <Typography variant="body1" color="textSecondary" component="p">
                         <Trans i18nKey={`aboutme.text`}/>
                     </Typography>
                 </CardContent>
