@@ -229,7 +229,7 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
                         {/*<Typography variant="h1" noWrap>*/}
                         {/*    Fullstack Software Entwickler*/}
                         {/*</Typography>*/}
-                        <h1 style={{margin: "auto"}}>Fullstack Software Entwickler</h1>
+                        <h1 style={{margin: "auto"}}><Trans i18nKey={`appbar.title`}/></h1>
                     </Toolbar>
                 </AppBar>
                 <nav className={classes.drawer} aria-label="mailbox folders">

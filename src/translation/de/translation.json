@@ -1,4 +1,7 @@
 {
+  "appbar": {
+    "title": "Fullstack Software Entwickler"
+  },
   "navbar": {
     "aboutme": "Über mich",
     "cv": "Lebenslauf",
