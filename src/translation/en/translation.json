@@ -6,8 +6,8 @@
     "contact": "Contact"
   },
   "aboutme": {
-    "subheader": "Software Engineer in Berlin",
-    "text": "Brief summary: Software developer who is always looking to learn and to improve! <br/> As a fullstack web developer I have expierence in Java/Kotlin, JSP/React, MySQL and Linux. I also have knowledge in the embedded world (C, STM32, Cypress, ESP32), as I've worked in the industry for 3 years. <br/><br/> Below you can find my contact data and will find out more about me and my projects. <br/><br/> I look forward to hearing from you! <br/> Jan"
+    "subheader": "Fullstack Software Engineer in Berlin",
+    "text": "Brief summary: Fullstack Software developer who is always looking to learn and to improve! <br/> As a fullstack web developer I have expierence in Java/Kotlin, JSP/React, MySQL and Linux. I also have knowledge in the embedded world (C, STM32, Cypress, ESP32), as I've worked in the industry for 3 years. <br/><br/> Below you can find my contact data and will find out more about me and my projects. <br/><br/> I look forward to hearing from you! <br/> Jan"
   },
   "projects": {
     "title": "Projects",

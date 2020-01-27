@@ -10,8 +10,8 @@ import PhoneIcon from '@material-ui/icons/Phone';
 
 export const Contact: React.FC = () => {
 
-    const useStyles = makeStyles(theme => ({
-        ContactList:{
+    const useStyles = makeStyles({
+        ContactList: {
             margin: 'auto'
         },
         listItemIcon: {
@@ -20,12 +20,19 @@ export const Contact: React.FC = () => {
         ListItemText: {
             color: "white"
         }
-    }));
+    });
     const classes = useStyles();
 
 
     return (
-        <div id='Contact' style={{width:'50%', margin:'auto', display:"flex", flexDirection:"row", height:'100vh'}}>
+        <Box id='Contact' style={{
+            width: '50%',
+            margin: 'auto',
+            display: "flex",
+            flexDirection: "row",
+            height: '100vh',
+            flexWrap: "wrap"
+        }}>
             <List
                 subheader={
                     <ListSubheader component="div" id="nested-list-subheader">
@@ -84,6 +91,6 @@ export const Contact: React.FC = () => {
                     </Link>
                 </Box>
             </List>
-        </div>
+        </Box>
     )
 };

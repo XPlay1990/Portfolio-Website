@@ -1,5 +1,20 @@
-import React, {useState} from 'react';
-import {Box, Drawer, Link, List, ListItem, ListItemIcon, ListItemText, ListSubheader, Tooltip} from "@material-ui/core";
+import React, {FunctionComponent, useState} from 'react';
+import {
+    AppBar,
+    Box,
+    Drawer,
+    IconButton,
+    Link,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    ListSubheader,
+    Toolbar,
+    Tooltip,
+    useMediaQuery,
+    useTheme
+} from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import PersonIcon from "@material-ui/icons/Person";
 import DescriptionIcon from "@material-ui/icons/Description";
@@ -14,65 +29,81 @@ import qdIcon from "../resources/navbar/qd_software.png"
 import {ToggleButton, ToggleButtonGroup} from "@material-ui/lab";
 import i18n from "i18next";
 import {Trans} from "react-i18next";
+import MenuIcon from "@material-ui/icons/Menu";
 
-export const Navbar: React.FC = () => {
-    const [language, setLanguage] = useState(i18n.language);
-    const drawerWidth = 240;
+// export const Navbar: React.FC = () => {
+export const Navbar: FunctionComponent<{ drawerWidth: number }> =
+    (drawerWidth) => {
+        const [mobileOpen, setMobileOpen] = React.useState(false);
 
-    const useStyles = makeStyles(theme => ({
-        drawer: {
-            [theme.breakpoints.up('sm')]: {
-                width: drawerWidth,
-                flexShrink: 0,
+        const [language, setLanguage] = useState(i18n.language);
+        const theme = useTheme();
+
+        const useStyles = makeStyles(theme => ({
+            drawer: {
+                [theme.breakpoints.up('sm')]: {
+                    width: drawerWidth.drawerWidth,
+                    flexShrink: 0,
+                },
+                // marginTop: 48
             },
-            // marginTop: 48
-        },
-        drawerPaper: {
-            width: drawerWidth,
-            // marginTop: 48
-        },
-        listItemIcon: {
-            width: '36px'
-        },
-        ListItemText: {
-            color: "white"
+            drawerPaper: {
+                width: drawerWidth.drawerWidth,
+                // marginTop: 48
+            },
+            listItemIcon: {
+                width: '36px'
+            },
+            ListItemText: {
+                color: "white"
+            },
+            appBar: {
+                [theme.breakpoints.up('sm')]: {
+                    width: `calc(100% - ${drawerWidth.drawerWidth}px)`,
+                    marginLeft: drawerWidth.drawerWidth,
+                },
+            },
+            menuButton: {
+                marginRight: theme.spacing(2),
+                [theme.breakpoints.up('sm')]: {
+                    display: 'none',
+                },
+            },
+            toolbar: (theme.mixins.toolbar as any),
+        }));
+
+        const classes = useStyles();
+
+        const breakPointMatches: boolean = useMediaQuery(theme.breakpoints.up('sm'));
+
+        function jumpToDivId(divId: string) {
+            const element = document.getElementById(divId);
+            if (element) {
+                element.scrollIntoView()
+            }
         }
-    }));
 
-    const classes = useStyles();
-
-    function jumpToDivId(divId: string) {
-        const element = document.getElementById(divId);
-        if (element) {
-            element.scrollIntoView()
+        function changeLanguageToggle(event: any, selectedLanguage: string) {
+            setLanguage(selectedLanguage);
+            i18n.changeLanguage(selectedLanguage);
+            window.location.reload()
         }
-    }
 
-    function changeLanguageToggle(event: any, selectedLanguage: string) {
-        setLanguage(selectedLanguage);
-        i18n.changeLanguage(selectedLanguage);
-        window.location.reload()
-    }
+        const handleDrawerToggle = () => {
+            setMobileOpen(!mobileOpen);
+        };
 
-    return (
-        <nav className={classes.drawer} aria-label="mailbox folders">
-            <Drawer
-                classes={{
-                    paper: classes.drawerPaper,
-                }}
-                variant="permanent"
-                open
-            >
-                <div
-                    // className={classes.toolbar}
-                />
+        const drawer = (
+            <div>
+                <div className={classes.toolbar}/>
                 <Divider/>
                 <List>
                     <ListItem button key='AboutMe' onClick={() => {
                         jumpToDivId('aboutMeBackground')
                     }}>
                         <ListItemIcon><PersonIcon/></ListItemIcon>
-                        <ListItemText className={classes.ListItemText} primary={<Trans i18nKey={`navbar.aboutme`}/>}/>
+                        <ListItemText className={classes.ListItemText}
+                                      primary={<Trans i18nKey={`navbar.aboutme`}/>}/>
                     </ListItem>
                     <ListItem button key='Lebenslauf' onClick={() => {
                         jumpToDivId('CV')
@@ -84,13 +115,15 @@ export const Navbar: React.FC = () => {
                         jumpToDivId('Projects')
                     }}>
                         <ListItemIcon><WorkIcon/></ListItemIcon>
-                        <ListItemText className={classes.ListItemText} primary={<Trans i18nKey={`navbar.projects`}/>}/>
+                        <ListItemText className={classes.ListItemText}
+                                      primary={<Trans i18nKey={`navbar.projects`}/>}/>
                     </ListItem>
                     <ListItem button key='Kontakt' onClick={() => {
                         jumpToDivId('Contact')
                     }}>
                         <ListItemIcon><MailIcon/></ListItemIcon>
-                        <ListItemText className={classes.ListItemText} primary={<Trans i18nKey={`navbar.contact`}/>}/>
+                        <ListItemText className={classes.ListItemText}
+                                      primary={<Trans i18nKey={`navbar.contact`}/>}/>
                     </ListItem>
                 </List>
                 <Divider/>
@@ -156,25 +189,80 @@ export const Navbar: React.FC = () => {
                     </Link>
                 </List>
                 <Divider/>
-                <Tooltip title={"Language"}>
-                    <ToggleButtonGroup
-                        value={language}
-                        exclusive
-                        size="small"
-                        onChange={changeLanguageToggle}
-                        aria-label="text alignment"
-                        className="ToggleButtonGroup"
-                        style={{margin:"20px auto"}}
-                    >
-                        <ToggleButton value='de' aria-label="centered">
-                            de
-                        </ToggleButton>
-                        <ToggleButton value='en' aria-label="centered">
-                            en
-                        </ToggleButton>
-                    </ToggleButtonGroup>
-                </Tooltip>
-            </Drawer>
-        </nav>
-    )
-};
+                <List>
+                    <ListItem>
+                        <Tooltip title={"Language"}>
+                            <ToggleButtonGroup
+                                value={language}
+                                exclusive
+                                size="medium"
+                                onChange={changeLanguageToggle}
+                                aria-label="text alignment"
+                                className="ToggleButtonGroup"
+                            >
+                                <ToggleButton value='de' aria-label="centered">
+                                    de
+                                </ToggleButton>
+                                <ToggleButton value='en' aria-label="centered">
+                                    en
+                                </ToggleButton>
+                            </ToggleButtonGroup>
+                        </Tooltip>
+                    </ListItem>
+                </List>
+            </div>
+        );
+
+        return (
+            <div>
+                <AppBar position="fixed" className={classes.appBar}>
+                    <Toolbar>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            edge="start"
+                            onClick={handleDrawerToggle}
+                            className={classes.menuButton}
+                        >
+                            <MenuIcon/>
+                        </IconButton>
+                        {/*<Typography variant="h1" noWrap>*/}
+                        {/*    Fullstack Software Entwickler*/}
+                        {/*</Typography>*/}
+                        <h1 style={{margin: "auto"}}>Fullstack Software Entwickler</h1>
+                    </Toolbar>
+                </AppBar>
+                <nav className={classes.drawer} aria-label="mailbox folders">
+                    {
+                        breakPointMatches ?
+                            (
+                                <Drawer
+                                    classes={{
+                                        paper: classes.drawerPaper,
+                                    }}
+                                    variant="permanent"
+                                    open
+                                >
+                                    {drawer}
+                                </Drawer>
+                            ) : (
+                                <Drawer
+                                    variant="temporary"
+                                    anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+                                    open={mobileOpen}
+                                    onClose={handleDrawerToggle}
+                                    classes={{
+                                        paper: classes.drawerPaper,
+                                    }}
+                                    ModalProps={{
+                                        keepMounted: true, // Better open performance on mobile.
+                                    }}
+                                >
+                                    {drawer}
+                                </Drawer>
+                            )
+                    }
+                </nav>
+            </div>
+        )
+    };

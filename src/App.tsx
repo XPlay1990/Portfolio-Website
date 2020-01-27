@@ -12,11 +12,18 @@ import {Contact} from "./contact/Contact";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
+const drawerWidth = 240;
+
 const App: React.FC = () => {
     const useStyles = makeStyles(theme => ({
         content: {
-            marginLeft: 240
-        }
+            flexGrow: 1,
+            // padding: theme.spacing(3),
+            [theme.breakpoints.up('sm')]: {
+                marginLeft: drawerWidth,
+            },
+        },
+        toolbar: (theme.mixins.toolbar as any),
     }));
 
     const classes = useStyles();
@@ -33,14 +40,14 @@ const App: React.FC = () => {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
-            {/*<Appbar/>*/}
-            <Navbar/>
-            <div className={classes.content}>
+            <Navbar drawerWidth={drawerWidth}/>
+            <main className={classes.content}>
+                <div className={classes.toolbar}/>
                 <AboutMe/>
                 <CV/>
                 <Projects/>
                 <Contact/>
-            </div>
+            </main>
         </ThemeProvider>
     );
 };
