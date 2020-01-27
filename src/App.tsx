@@ -9,8 +9,18 @@ import {Navbar} from "./navbar/Navbar";
 import {CV} from './cv/CV';
 import {CssBaseline} from "@material-ui/core";
 import {Contact} from "./contact/Contact";
+import ReactGA from 'react-ga';
+import i18next from "i18next";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
+const ga_TrackerId = 'UA-157113083-1';
+ReactGA.initialize(ga_TrackerId);
+ReactGA.set({
+    selectedLanguage: i18next.language,
+    // any data that is relevant to the user session
+    // that you would like to track with google analytics
+});
 
 const drawerWidth = 240;
 

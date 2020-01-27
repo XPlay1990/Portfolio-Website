@@ -11,8 +11,9 @@ import LinkIcon from '@material-ui/icons/Link';
 import ComportTool from "../resources/projects/ComportTool.png";
 import PyQtGraph from "../resources/projects/PyQtGraph_3D.png";
 import QDPortal from "../resources/projects/QD_Portal.png";
-import {Grid, Link} from "@material-ui/core";
+import {Grid} from "@material-ui/core";
 import {Trans} from "react-i18next";
+import ReactGA from 'react-ga';
 
 export const Projects: React.FC = () => {
     const useStyles = makeStyles(theme => ({
@@ -47,25 +48,29 @@ export const Projects: React.FC = () => {
                             title="QD Software"
                             subheader="Backend: Kotlin & Spring Boot 2, Frontend: React"
                         />
-                        <Link href="http://qd-software.de" target="_blank" rel="noopener noreferrer">
+                        <ReactGA.OutboundLink eventLabel="Projects_QDSoftware" to="http://qd-software.de"
+                                              target="_blank" rel="noopener noreferrer">
                             <CardMedia
                                 className={classes.media}
                                 image={QDPortal}
                                 title="QDPortal"
                             />
-                        </Link>
+                        </ReactGA.OutboundLink>
                         <CardContent>
                             <Typography variant="body2" color="textSecondary" component="p">
-                                <Link href="http://qd-software.de">www.qd-software.de</Link> <br/>
+                                <ReactGA.OutboundLink eventLabel="Projects_QDSoftware"
+                                                      to="http://qd-software.de">www.qd-software.de</ReactGA.OutboundLink>
+                                <br/>
                                 <Trans i18nKey={`projects.qd.text`}/>
                             </Typography>
                         </CardContent>
                         <CardActions disableSpacing>
-                            <Link href="http://qd-software.de" target="_blank" rel="noopener noreferrer">
+                            <ReactGA.OutboundLink eventLabel="Projects_QDSoftware" to="http://qd-software.de"
+                                                  target="_blank" rel="noopener noreferrer">
                                 <IconButton aria-label="link">
                                     <LinkIcon/>
                                 </IconButton>
-                            </Link>
+                            </ReactGA.OutboundLink>
                         </CardActions>
                     </Card>
                 </Grid>
@@ -75,26 +80,28 @@ export const Projects: React.FC = () => {
                             title="3D Radar Tool"
                             subheader="Python & PyQtGraph"
                         />
-                        <Link href="https://github.com/XPlay1990/PyQTGraph_3D" target="_blank"
-                              rel="noopener noreferrer">
+                        <ReactGA.OutboundLink eventLabel="Projects_PyQtGraph3D"
+                                              to="https://github.com/XPlay1990/PyQTGraph_3D" target="_blank"
+                                              rel="noopener noreferrer">
                             <CardMedia
                                 className={classes.media}
                                 image={PyQtGraph}
                                 title="3D Radar Tool"
                             />
-                        </Link>
+                        </ReactGA.OutboundLink>
                         <CardContent>
                             <Typography variant="body2" color="textSecondary" component="p">
                                 <Trans i18nKey={`projects.radar.text`}/>
                             </Typography>
                         </CardContent>
                         <CardActions disableSpacing>
-                            <Link href="https://github.com/XPlay1990/PyQTGraph_3D" target="_blank"
-                                  rel="noopener noreferrer">
+                            <ReactGA.OutboundLink eventLabel="Projects_PyQtGraph3D"
+                                                  to="https://github.com/XPlay1990/PyQTGraph_3D" target="_blank"
+                                                  rel="noopener noreferrer">
                                 <IconButton aria-label="link">
                                     <LinkIcon/>
                                 </IconButton>
-                            </Link>
+                            </ReactGA.OutboundLink>
                         </CardActions>
                     </Card>
                 </Grid>
@@ -104,26 +111,28 @@ export const Projects: React.FC = () => {
                             title="Comport-Tool"
                             subheader="Java 1.8"
                         />
-                        <Link href="https://github.com/XPlay1990/Comport-Tool" target="_blank"
-                              rel="noopener noreferrer">
+                        <ReactGA.OutboundLink eventLabel="Projects_Comport-Tool"
+                                              to="https://github.com/XPlay1990/Comport-Tool" target="_blank"
+                                              rel="noopener noreferrer">
                             <CardMedia
                                 className={classes.media}
                                 image={ComportTool}
                                 title="Comport-Tool"
                             />
-                        </Link>
+                        </ReactGA.OutboundLink>
                         <CardContent>
                             <Typography variant="body2" color="textSecondary" component="p">
                                 <Trans i18nKey={`projects.comporttool.text`}/>
                             </Typography>
                         </CardContent>
                         <CardActions disableSpacing>
-                            <Link href="https://github.com/XPlay1990/Comport-Tool" target="_blank"
-                                  rel="noopener noreferrer">
+                            <ReactGA.OutboundLink eventLabel="Projects_Comport-Tool"
+                                                  to="https://github.com/XPlay1990/Comport-Tool" target="_blank"
+                                                  rel="noopener noreferrer">
                                 <IconButton aria-label="link">
                                     <LinkIcon/>
                                 </IconButton>
-                            </Link>
+                            </ReactGA.OutboundLink>
                         </CardActions>
                     </Card>
                 </Grid>
@@ -139,12 +148,13 @@ export const Projects: React.FC = () => {
                             </Typography>
                         </CardContent>
                         <CardActions disableSpacing>
-                            <Link href="https://github.com/XPlay1990/" target="_blank"
-                                  rel="noopener noreferrer">
+                            <ReactGA.OutboundLink eventLabel="Projects_more" to="https://github.com/XPlay1990/"
+                                                  target="_blank"
+                                                  rel="noopener noreferrer">
                                 <IconButton aria-label="link">
                                     <LinkIcon/>
                                 </IconButton>
-                            </Link>
+                            </ReactGA.OutboundLink>
                         </CardActions>
                     </Card>
                 </Grid>

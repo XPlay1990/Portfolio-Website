@@ -4,7 +4,6 @@ import {
     Box,
     Drawer,
     IconButton,
-    Link,
     List,
     ListItem,
     ListItemIcon,
@@ -30,6 +29,7 @@ import {ToggleButton, ToggleButtonGroup} from "@material-ui/lab";
 import i18n from "i18next";
 import {Trans} from "react-i18next";
 import MenuIcon from "@material-ui/icons/Menu";
+import ReactGA from 'react-ga';
 
 // export const Navbar: React.FC = () => {
 export const Navbar: FunctionComponent<{ drawerWidth: number }> =
@@ -81,12 +81,22 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
             if (element) {
                 element.scrollIntoView()
             }
+
+            ReactGA.event({
+                category: "Navbar",
+                action: divId,
+            });
         }
 
         function changeLanguageToggle(event: any, selectedLanguage: string) {
             setLanguage(selectedLanguage);
             i18n.changeLanguage(selectedLanguage);
-            window.location.reload()
+            window.location.reload();
+
+            ReactGA.event({
+                category: "ChangeLanguage",
+                action: selectedLanguage,
+            });
         }
 
         const handleDrawerToggle = () => {
@@ -135,29 +145,32 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
                     }
                 >
                     <Box display={'flex'} flexDirection={'column'} margin={'auto'}>
-                        <Link href={'https://www.linkedin.com/in/jan-adamczyk/'} target="_blank"
-                              rel="noopener noreferrer">
+                        <ReactGA.OutboundLink eventLabel="Navbar_LinkedIn"
+                                              to={'https://www.linkedin.com/in/jan-adamczyk/'} target="_blank"
+                                              rel="noopener noreferrer">
                             <ListItem button key='LinkedIn'>
                                 <ListItemIcon><img className={classes.listItemIcon} src={linkedInIcon}
                                                    alt={'LinkedIn'}/></ListItemIcon>
                                 <ListItemText className={classes.ListItemText} primary='LinkedIn'/>
                             </ListItem>
-                        </Link>
-                        <Link href={'https://www.xing.com/profile/Jan_Adamczyk3'} target="_blank"
-                              rel="noopener noreferrer">
+                        </ReactGA.OutboundLink>
+                        <ReactGA.OutboundLink eventLabel="Navbar_Xing" to={'https://www.xing.com/profile/Jan_Adamczyk3'}
+                                              target="_blank"
+                                              rel="noopener noreferrer">
                             <ListItem button key='Xing'>
                                 <ListItemIcon><img className={classes.listItemIcon} src={xingIcon}
                                                    alt={'Xing'}/></ListItemIcon>
                                 <ListItemText className={classes.ListItemText} primary='Xing'/>
                             </ListItem>
-                        </Link>
-                        <Link href={'https://github.com/XPlay1990'} target="_blank" rel="noopener noreferrer">
+                        </ReactGA.OutboundLink>
+                        <ReactGA.OutboundLink eventLabel="Navbar_GitHub" to={'https://github.com/XPlay1990'}
+                                              target="_blank" rel="noopener noreferrer">
                             <ListItem button key='Github'>
                                 <ListItemIcon><img className={classes.listItemIcon} src={githubIcon}
                                                    alt={'Github'}/></ListItemIcon>
                                 <ListItemText className={classes.ListItemText} primary='Github'/>
                             </ListItem>
-                        </Link>
+                        </ReactGA.OutboundLink>
                     </Box>
                 </List>
                 <Divider/>
@@ -168,25 +181,28 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
                         </ListSubheader>
                     }
                 >
-                    <Link href={'http://www.qd-software.de'} target="_blank" rel="noopener noreferrer">
+                    <ReactGA.OutboundLink eventLabel="Navbar_QDSoftware" to={'http://www.qd-software.de'}
+                                          target="_blank" rel="noopener noreferrer">
                         <ListItem button key='QD Software'>
                             <ListItemIcon><img className={classes.listItemIcon} src={qdIcon}
                                                alt={"qd software"}/></ListItemIcon>
                             <ListItemText className={classes.ListItemText} primary='QD Software'/>
                         </ListItem>
-                    </Link>
-                    <Link href={'http://jenkins.jan-adamczyk.de'} target="_blank" rel="noopener noreferrer">
+                    </ReactGA.OutboundLink>
+                    <ReactGA.OutboundLink eventLabel="Navbar_Jenkins" to={'http://jenkins.jan-adamczyk.de'}
+                                          target="_blank" rel="noopener noreferrer">
                         <ListItem button key='Jenkins'>
                             <ListItemIcon><LinkIcon/></ListItemIcon>
                             <ListItemText className={classes.ListItemText} primary='Jenkins'/>
                         </ListItem>
-                    </Link>
-                    <Link href={'http://artifactory.jan-adamczyk.de'} target="_blank" rel="noopener noreferrer">
+                    </ReactGA.OutboundLink>
+                    <ReactGA.OutboundLink eventLabel="Navbar_Artifactory" to={'http://artifactory.jan-adamczyk.de'}
+                                          target="_blank" rel="noopener noreferrer">
                         <ListItem button key='Artifactory'>
                             <ListItemIcon><LinkIcon/></ListItemIcon>
                             <ListItemText className={classes.ListItemText} primary='Artifactory'/>
                         </ListItem>
-                    </Link>
+                    </ReactGA.OutboundLink>
                 </List>
                 <Divider/>
                 <List>
