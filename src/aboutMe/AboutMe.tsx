@@ -30,7 +30,7 @@ export const AboutMe: React.FC = () => {
                 <CardMedia
                     className={classes.media}
                     image={Bewerbungsbild}
-                    title="Paella dish"
+                    title="Jan Adamczyk"
                 />
                 <CardContent>
                     <Typography variant="body1" color="textSecondary" component="p">

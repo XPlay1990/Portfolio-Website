@@ -23,6 +23,9 @@
     "comporttool": {
       "text": "Tool zur live Auswertung eingehender Daten über den COM-Port/TCPIP Socket. Diverse extra Funktionen wie einzelne Kanalauswahl, Zeitmessungen, Pause-Möglichkeit, umbennen von Kanälen und Sichtbereich vereinfachen die Analyse der eingehenden Daten. Wird bei PAS Deutschland GmbH zur Optimierung des Touch-Systems genutzt."
     },
+    "klimaComfort": {
+      "text": "Sie benötigen eine Klimaanlage und wohnen in der Nähe von Posen (Polen)? Hier wird Ihnen mit kompetenter Beratung geholfen!"
+    },
     "additional": "Und viele mehr!"
   }
 }

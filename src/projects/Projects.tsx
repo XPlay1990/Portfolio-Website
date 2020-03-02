@@ -11,6 +11,7 @@ import LinkIcon from '@material-ui/icons/Link';
 import ComportTool from "../resources/projects/ComportTool.png";
 import PyQtGraph from "../resources/projects/PyQtGraph_3D.png";
 import QDPortal from "../resources/projects/QD_Portal.png";
+import KlimaComfort from "../resources/projects/klima-comfort.jpg";
 import {Grid} from "@material-ui/core";
 import {Trans} from "react-i18next";
 import ReactGA from 'react-ga';
@@ -123,6 +124,37 @@ export const Projects: React.FC = () => {
                         <CardContent>
                             <Typography variant="body2" color="textSecondary" component="p">
                                 <Trans i18nKey={`projects.comporttool.text`}/>
+                            </Typography>
+                        </CardContent>
+                        <CardActions disableSpacing>
+                            <ReactGA.OutboundLink eventLabel="Projects_Comport-Tool"
+                                                  to="https://github.com/XPlay1990/Comport-Tool" target="_blank"
+                                                  rel="noopener noreferrer">
+                                <IconButton aria-label="link">
+                                    <LinkIcon/>
+                                </IconButton>
+                            </ReactGA.OutboundLink>
+                        </CardActions>
+                    </Card>
+                </Grid>
+                <Grid item md={6}>
+                    <Card className={classes.card}>
+                        <CardHeader
+                            title="Klima-Comfort"
+                            subheader="Wordpress"
+                        />
+                        <ReactGA.OutboundLink eventLabel="Projects_Klima-Comfort"
+                                              to="https://klima-comfort.pl" target="_blank"
+                                              rel="noopener noreferrer">
+                            <CardMedia
+                                className={classes.media}
+                                image={KlimaComfort}
+                                title="Klima-Comfort"
+                            />
+                        </ReactGA.OutboundLink>
+                        <CardContent>
+                            <Typography variant="body2" color="textSecondary" component="p">
+                                <Trans i18nKey={`projects.klimaComfort.text`}/>
                             </Typography>
                         </CardContent>
                         <CardActions disableSpacing>
