@@ -159,7 +159,7 @@ export const Projects: React.FC = () => {
                         </CardContent>
                         <CardActions disableSpacing>
                             <ReactGA.OutboundLink eventLabel="Projects_Comport-Tool"
-                                                  to="https://github.com/XPlay1990/Comport-Tool" target="_blank"
+                                                  to="https://klima-comfort.pl" target="_blank"
                                                   rel="noopener noreferrer">
                                 <IconButton aria-label="link">
                                     <LinkIcon/>
