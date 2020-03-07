@@ -300,7 +300,6 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
             </div>
         );
 
-        console.log(localStorage.getItem(IS_DARK_MODE))
         return (
             <div>
                 <AppBar position="fixed" className={classes.appBar}>
