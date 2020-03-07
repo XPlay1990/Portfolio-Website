@@ -27,5 +27,13 @@
       "text": "Sie benötigen eine Klimaanlage und wohnen in der Nähe von Posen (Polen)? Hier wird Ihnen mit kompetenter Beratung geholfen!"
     },
     "additional": "Und viele mehr!"
+  },
+  "prints3D": {
+    "title": "3D Druck",
+    "me": "Das bin ich!",
+    "headsetHolder": "Tisch-Kopfhörerhalter",
+    "lampshade": "Lampenschirm",
+    "pawood": "3D-Firmenlogo auf einer Messingplatte",
+    "designed": "Erstellt mit Fusion 360"
   }
 }

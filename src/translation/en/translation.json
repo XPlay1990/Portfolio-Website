@@ -27,5 +27,13 @@
       "text": "Do you need air conditioning and are living close to Poznan (poland)? You are in the right place and we will help you with our expertise!"
     },
     "additional": "And many more!"
+  },
+  "prints3D": {
+    "title": "3D Prints",
+    "me": "That's me!",
+    "headsetHolder": "desk headset holder",
+    "lampshade": "Lampshade",
+    "pawood": "3D-Company Logo on brass plate",
+    "designed": "Designed in Fusion 360"
   }
 }

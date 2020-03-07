@@ -11,6 +11,7 @@ import {CssBaseline} from "@material-ui/core";
 import {Contact} from "./contact/Contact";
 import ReactGA from 'react-ga';
 import i18next from "i18next";
+import {Prints3D} from "./prints3d/Prints3D";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -57,6 +58,7 @@ const App: React.FC = () => {
                 <CV/>
                 <Projects/>
                 <Contact/>
+                <Prints3D/>
             </main>
         </ThemeProvider>
     );

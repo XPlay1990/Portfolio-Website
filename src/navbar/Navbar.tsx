@@ -29,6 +29,7 @@ import {ToggleButton, ToggleButtonGroup} from "@material-ui/lab";
 import i18n from "i18next";
 import {Trans} from "react-i18next";
 import MenuIcon from "@material-ui/icons/Menu";
+import CreateIcon from '@material-ui/icons/Create';
 import ReactGA from 'react-ga';
 
 // export const Navbar: React.FC = () => {
@@ -134,6 +135,13 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
                         <ListItemIcon><MailIcon/></ListItemIcon>
                         <ListItemText className={classes.ListItemText}
                                       primary={<Trans i18nKey={`navbar.contact`}/>}/>
+                    </ListItem>
+                    <ListItem button key='Prints3D' onClick={() => {
+                        jumpToDivId('Prints3D')
+                    }}>
+                        <ListItemIcon><CreateIcon/></ListItemIcon>
+                        <ListItemText className={classes.ListItemText}
+                                      primary={<Trans i18nKey={`prints3D.title`}/>}/>
                     </ListItem>
                 </List>
                 <Divider/>
