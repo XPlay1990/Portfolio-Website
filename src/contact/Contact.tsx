@@ -7,6 +7,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import MailIcon from '@material-ui/icons/Mail';
 import PhoneIcon from '@material-ui/icons/Phone';
 import ReactGA from 'react-ga';
+import {IS_DARK_MODE} from "../config/constants";
 
 export const Contact: React.FC = () => {
 
@@ -17,8 +18,11 @@ export const Contact: React.FC = () => {
         listItemIcon: {
             width: '36px'
         },
-        ListItemText: {
+        ListItemTextDarkMode: {
             color: "white"
+        },
+        ListItemTextBrightMode: {
+            color: "black"
         }
     });
     const classes = useStyles();
@@ -46,14 +50,18 @@ export const Contact: React.FC = () => {
                                           rel="noopener noreferrer">
                         <ListItem button key='Mail'>
                             <ListItemIcon><MailIcon/></ListItemIcon>
-                            <ListItemText className={classes.ListItemText} primary='Email: j_adamczyk@hotmail.com'/>
+                            <ListItemText
+                                className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
+                                primary='Email: j_adamczyk@hotmail.com'/>
                         </ListItem>
                     </ReactGA.OutboundLink>
                     <ReactGA.OutboundLink eventLabel="Contact_Phone" to={'tel:+4915751763598'}
                                           rel="noopener noreferrer">
                         <ListItem button key='Tel'>
                             <ListItemIcon><PhoneIcon/></ListItemIcon>
-                            <ListItemText className={classes.ListItemText} primary='Tel: +49 1575 1763598'/>
+                            <ListItemText
+                                className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
+                                primary='Tel: +49 1575 1763598'/>
                         </ListItem>
                     </ReactGA.OutboundLink>
                 </Box>
@@ -73,7 +81,9 @@ export const Contact: React.FC = () => {
                         <ListItem button key='LinkedIn'>
                             <ListItemIcon><img className={classes.listItemIcon} src={linkedInIcon}
                                                alt={'LinkedIn'}/></ListItemIcon>
-                            <ListItemText className={classes.ListItemText} primary='LinkedIn'/>
+                            <ListItemText
+                                className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
+                                primary='LinkedIn'/>
                         </ListItem>
                     </ReactGA.OutboundLink>
                     <ReactGA.OutboundLink eventLabel="Contact_Xing" to={'https://www.xing.com/profile/Jan_Adamczyk3'}
@@ -82,7 +92,9 @@ export const Contact: React.FC = () => {
                         <ListItem button key='Xing'>
                             <ListItemIcon><img className={classes.listItemIcon} src={xingIcon}
                                                alt={'Xing'}/></ListItemIcon>
-                            <ListItemText className={classes.ListItemText} primary='Xing'/>
+                            <ListItemText
+                                className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
+                                primary='Xing'/>
                         </ListItem>
                     </ReactGA.OutboundLink>
                     <ReactGA.OutboundLink eventLabel="Contact_GitHub" to={'https://github.com/XPlay1990'}
@@ -91,7 +103,9 @@ export const Contact: React.FC = () => {
                         <ListItem button key='Github'>
                             <ListItemIcon><img className={classes.listItemIcon} src={githubIcon}
                                                alt={'Github'}/></ListItemIcon>
-                            <ListItemText className={classes.ListItemText} primary='Github'/>
+                            <ListItemText
+                                className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
+                                primary='Github'/>
                         </ListItem>
                     </ReactGA.OutboundLink>
                 </Box>

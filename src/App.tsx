@@ -7,11 +7,12 @@ import {createMuiTheme, makeStyles, responsiveFontSizes, ThemeProvider} from '@m
 import {pdfjs} from 'react-pdf';
 import {Navbar} from "./navbar/Navbar";
 import {CV} from './cv/CV';
-import {CssBaseline} from "@material-ui/core";
+import {CssBaseline, useMediaQuery} from "@material-ui/core";
 import {Contact} from "./contact/Contact";
 import ReactGA from 'react-ga';
 import i18next from "i18next";
 import {Prints3D} from "./prints3d/Prints3D";
+import {IS_DARK_MODE} from "./config/constants";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -39,9 +40,11 @@ const App: React.FC = () => {
 
     const classes = useStyles();
 
+    const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+    localStorage.setItem(IS_DARK_MODE, (localStorage.getItem(IS_DARK_MODE) || prefersDarkMode.toString()));
     let theme = createMuiTheme({
         palette: {
-            type: true ? 'dark' : 'light', // mediaquery on dark theme
+            type: (localStorage.getItem(IS_DARK_MODE) === 'true') ? 'dark' : 'light', // mediaquery on dark theme
             // primary: {main: blue[500]},
             // secondary: red,
         },

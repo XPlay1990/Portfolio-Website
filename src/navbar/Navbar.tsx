@@ -31,6 +31,7 @@ import {Trans} from "react-i18next";
 import MenuIcon from "@material-ui/icons/Menu";
 import CreateIcon from '@material-ui/icons/Create';
 import ReactGA from 'react-ga';
+import {IS_DARK_MODE} from "../config/constants";
 
 // export const Navbar: React.FC = () => {
 export const Navbar: FunctionComponent<{ drawerWidth: number }> =
@@ -38,6 +39,7 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
         const [mobileOpen, setMobileOpen] = React.useState(false);
 
         const [language, setLanguage] = useState(i18n.language);
+        const [isDarkMode, setIsDarkMode] = React.useState(localStorage.getItem(IS_DARK_MODE));
         const theme = useTheme();
 
         const useStyles = makeStyles(theme => ({
@@ -55,8 +57,11 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
             listItemIcon: {
                 width: '36px'
             },
-            ListItemText: {
+            ListItemTextDarkMode: {
                 color: "white"
+            },
+            ListItemTextBrightMode: {
+                color: "black"
             },
             appBar: {
                 [theme.breakpoints.up('sm')]: {
@@ -71,6 +76,11 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
                 },
             },
             toolbar: (theme.mixins.toolbar as any),
+            ToggleButtonGroup: {
+                marginLeft: "auto",
+                marginRight: "auto",
+                marginTop: "10px"
+            }
         }));
 
         const classes = useStyles();
@@ -100,6 +110,17 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
             });
         }
 
+        function changeDarkMode(event: any, isDarkMode: string) {
+            setIsDarkMode(isDarkMode);
+            localStorage.setItem(IS_DARK_MODE, isDarkMode);
+            window.location.reload();
+
+            ReactGA.event({
+                category: "ChangeDisplayMode",
+                action: isDarkMode,
+            });
+        }
+
         const handleDrawerToggle = () => {
             setMobileOpen(!mobileOpen);
         };
@@ -113,35 +134,45 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
                         jumpToDivId('aboutMeBackground')
                     }}>
                         <ListItemIcon><PersonIcon/></ListItemIcon>
-                        <ListItemText className={classes.ListItemText}
-                                      primary={<Trans i18nKey={`navbar.aboutme`}/>}/>
+                        <ListItemText
+                            className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
+
+                            primary={<Trans i18nKey={`navbar.aboutme`}/>}/>
                     </ListItem>
                     <ListItem button key='Lebenslauf' onClick={() => {
                         jumpToDivId('CV')
                     }}>
                         <ListItemIcon><DescriptionIcon/></ListItemIcon>
-                        <ListItemText className={classes.ListItemText} primary={<Trans i18nKey={`navbar.cv`}/>}/>
+                        <ListItemText
+                            className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
+                            primary={<Trans i18nKey={`navbar.cv`}/>}/>
                     </ListItem>
                     <ListItem button key='Projekte' onClick={() => {
                         jumpToDivId('Projects')
                     }}>
                         <ListItemIcon><WorkIcon/></ListItemIcon>
-                        <ListItemText className={classes.ListItemText}
-                                      primary={<Trans i18nKey={`navbar.projects`}/>}/>
+                        <ListItemText
+                            className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
+
+                            primary={<Trans i18nKey={`navbar.projects`}/>}/>
                     </ListItem>
                     <ListItem button key='Kontakt' onClick={() => {
                         jumpToDivId('Contact')
                     }}>
                         <ListItemIcon><MailIcon/></ListItemIcon>
-                        <ListItemText className={classes.ListItemText}
-                                      primary={<Trans i18nKey={`navbar.contact`}/>}/>
+                        <ListItemText
+                            className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
+
+                            primary={<Trans i18nKey={`navbar.contact`}/>}/>
                     </ListItem>
                     <ListItem button key='Prints3D' onClick={() => {
                         jumpToDivId('Prints3D')
                     }}>
                         <ListItemIcon><CreateIcon/></ListItemIcon>
-                        <ListItemText className={classes.ListItemText}
-                                      primary={<Trans i18nKey={`prints3D.title`}/>}/>
+                        <ListItemText
+                            className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
+
+                            primary={<Trans i18nKey={`prints3D.title`}/>}/>
                     </ListItem>
                 </List>
                 <Divider/>
@@ -159,7 +190,9 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
                             <ListItem button key='LinkedIn'>
                                 <ListItemIcon><img className={classes.listItemIcon} src={linkedInIcon}
                                                    alt={'LinkedIn'}/></ListItemIcon>
-                                <ListItemText className={classes.ListItemText} primary='LinkedIn'/>
+                                <ListItemText
+                                    className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
+                                    primary='LinkedIn'/>
                             </ListItem>
                         </ReactGA.OutboundLink>
                         <ReactGA.OutboundLink eventLabel="Navbar_Xing" to={'https://www.xing.com/profile/Jan_Adamczyk3'}
@@ -168,7 +201,9 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
                             <ListItem button key='Xing'>
                                 <ListItemIcon><img className={classes.listItemIcon} src={xingIcon}
                                                    alt={'Xing'}/></ListItemIcon>
-                                <ListItemText className={classes.ListItemText} primary='Xing'/>
+                                <ListItemText
+                                    className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
+                                    primary='Xing'/>
                             </ListItem>
                         </ReactGA.OutboundLink>
                         <ReactGA.OutboundLink eventLabel="Navbar_GitHub" to={'https://github.com/XPlay1990'}
@@ -176,7 +211,9 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
                             <ListItem button key='Github'>
                                 <ListItemIcon><img className={classes.listItemIcon} src={githubIcon}
                                                    alt={'Github'}/></ListItemIcon>
-                                <ListItemText className={classes.ListItemText} primary='Github'/>
+                                <ListItemText
+                                    className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
+                                    primary='Github'/>
                             </ListItem>
                         </ReactGA.OutboundLink>
                     </Box>
@@ -194,49 +231,76 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
                         <ListItem button key='QD Software'>
                             <ListItemIcon><img className={classes.listItemIcon} src={qdIcon}
                                                alt={"qd software"}/></ListItemIcon>
-                            <ListItemText className={classes.ListItemText} primary='QD Software'/>
+                            <ListItemText
+                                className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
+                                primary='QD Software'/>
                         </ListItem>
                     </ReactGA.OutboundLink>
                     <ReactGA.OutboundLink eventLabel="Navbar_Jenkins" to={'http://jenkins.jan-adamczyk.de'}
                                           target="_blank" rel="noopener noreferrer">
                         <ListItem button key='Jenkins'>
                             <ListItemIcon><LinkIcon/></ListItemIcon>
-                            <ListItemText className={classes.ListItemText} primary='Jenkins'/>
+                            <ListItemText
+                                className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
+                                primary='Jenkins'/>
                         </ListItem>
                     </ReactGA.OutboundLink>
                     <ReactGA.OutboundLink eventLabel="Navbar_Artifactory" to={'http://artifactory.jan-adamczyk.de'}
                                           target="_blank" rel="noopener noreferrer">
                         <ListItem button key='Artifactory'>
                             <ListItemIcon><LinkIcon/></ListItemIcon>
-                            <ListItemText className={classes.ListItemText} primary='Artifactory'/>
+                            <ListItemText
+                                className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
+                                primary='Artifactory'/>
                         </ListItem>
                     </ReactGA.OutboundLink>
                 </List>
                 <Divider/>
-                <List>
-                    <ListItem>
-                        <Tooltip title={"Language"}>
-                            <ToggleButtonGroup
-                                value={language}
-                                exclusive
-                                size="medium"
-                                onChange={changeLanguageToggle}
-                                aria-label="text alignment"
-                                className="ToggleButtonGroup"
-                            >
-                                <ToggleButton value='de' aria-label="centered">
-                                    de
-                                </ToggleButton>
-                                <ToggleButton value='en' aria-label="centered">
-                                    en
-                                </ToggleButton>
-                            </ToggleButtonGroup>
-                        </Tooltip>
-                    </ListItem>
-                </List>
+                <Box id='Contact' style={{
+                    margin: 'auto',
+                    display: "flex",
+                    flexDirection: "column",
+                    flexWrap: "wrap"
+                }}>
+                    <Tooltip title={"Language"}>
+                        <ToggleButtonGroup
+                            value={language}
+                            exclusive
+                            size="medium"
+                            onChange={changeLanguageToggle}
+                            aria-label="text alignment"
+                            className={classes.ToggleButtonGroup}
+                        >
+                            <ToggleButton value='de' aria-label="centered">
+                                de
+                            </ToggleButton>
+                            <ToggleButton value='en' aria-label="centered">
+                                en
+                            </ToggleButton>
+                        </ToggleButtonGroup>
+                    </Tooltip>
+                    <Tooltip title={"DarkMode"}>
+                        <ToggleButtonGroup
+                            value={isDarkMode}
+                            exclusive
+                            size="medium"
+                            onChange={changeDarkMode}
+                            aria-label="text alignment"
+                            className={classes.ToggleButtonGroup}
+                        >
+                            <ToggleButton value='true' aria-label="centered">
+                                On
+                            </ToggleButton>
+                            <ToggleButton value='false' aria-label="centered">
+                                Off
+                            </ToggleButton>
+                        </ToggleButtonGroup>
+                    </Tooltip>
+                </Box>
             </div>
         );
 
+        console.log(localStorage.getItem(IS_DARK_MODE))
         return (
             <div>
                 <AppBar position="fixed" className={classes.appBar}>
