@@ -38,7 +38,7 @@ export const Contact: React.FC = () => {
                     margin: 'auto',
                     height: '100vh',
                 }}>
-                    <Slide direction="left" in={isVisible} timeout={1000}>
+                    <Slide direction="left" in={isVisible} timeout={1000} mountOnEnter unmountOnExit>
                         <Box style={{
                             width: '50%',
                             margin: 'auto',

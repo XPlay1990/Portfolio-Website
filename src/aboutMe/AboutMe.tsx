@@ -28,7 +28,7 @@ export const AboutMe: React.FC = () => {
                           onChange={(isVisible => isVisible ? setVisibilityTriggered(true) : null)}>
             {({isVisible}) =>
                 <div id="aboutMeBackground">
-                    <Slide direction="left" in={isVisible} timeout={1000}>
+                    <Slide direction="left" in={isVisible} timeout={1000} mountOnEnter unmountOnExit>
                         <Card className="aboutMeCard">
                             <CardHeader
                                 title="Jan Adamczyk"
