@@ -256,13 +256,13 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
                     </ReactGA.OutboundLink>
                 </List>
                 <Divider/>
-                <Box id='Contact' style={{
+                <Box style={{
                     margin: 'auto',
                     display: "flex",
                     flexDirection: "column",
                     flexWrap: "wrap"
                 }}>
-                    <Tooltip title={"Language"}>
+                    <Tooltip title={<Trans i18nKey={`navbar.languageToggle.title`}/>}>
                         <ToggleButtonGroup
                             value={language}
                             exclusive
@@ -279,7 +279,7 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
                             </ToggleButton>
                         </ToggleButtonGroup>
                     </Tooltip>
-                    <Tooltip title={"DarkMode"}>
+                    <Tooltip title={<Trans i18nKey={`navbar.darkModeToggle.title`}/>}>
                         <ToggleButtonGroup
                             value={isDarkMode}
                             exclusive
@@ -289,10 +289,10 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
                             className={classes.ToggleButtonGroup}
                         >
                             <ToggleButton value='true' aria-label="centered">
-                                On
+                                <Trans i18nKey={`navbar.darkModeToggle.dark`}/>
                             </ToggleButton>
                             <ToggleButton value='false' aria-label="centered">
-                                Off
+                                <Trans i18nKey={`navbar.darkModeToggle.bright`}/>
                             </ToggleButton>
                         </ToggleButtonGroup>
                     </Tooltip>

@@ -6,7 +6,15 @@
     "aboutme": "About me",
     "cv": "CV",
     "projects": "Projects",
-    "contact": "Contact"
+    "contact": "Contact",
+    "languageToggle": {
+      "title": "Language"
+    },
+    "darkModeToggle": {
+      "title": "Dark-Mode",
+      "dark": "Dunkel",
+      "bright": "Hell"
+    }
   },
   "aboutme": {
     "subheader": "Fullstack Software Engineer in Berlin",
