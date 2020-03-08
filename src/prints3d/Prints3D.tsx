@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Box, Grid, Grow} from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -7,8 +7,11 @@ import Typography from "@material-ui/core/Typography";
 import VisibilitySensor from "react-visibility-sensor";
 
 export const Prints3D: React.FC = () => {
+    const [visibilityTriggered, setVisibilityTriggered] = useState(false);
+
     return (
-        <VisibilitySensor partialVisibility>
+        <VisibilitySensor partialVisibility active={!visibilityTriggered} delayedCall
+                          onChange={(isVisible => isVisible ? setVisibilityTriggered(true) : null)}>
             {({isVisible}) =>
                 <Box id="Prints3D">
                     <Typography variant="h2" color="textPrimary" align={"center"}>

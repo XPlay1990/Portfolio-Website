@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -12,6 +12,7 @@ import {Slide} from "@material-ui/core";
 import VisibilitySensor from "react-visibility-sensor";
 
 export const AboutMe: React.FC = () => {
+    const [visibilityTriggered, setVisibilityTriggered] = useState(false);
     const useStyles = makeStyles({
         media: {
             height: 0,
@@ -23,7 +24,8 @@ export const AboutMe: React.FC = () => {
     const classes = useStyles();
 
     return (
-        <VisibilitySensor partialVisibility>
+        <VisibilitySensor partialVisibility active={!visibilityTriggered} delayedCall
+                          onChange={(isVisible => isVisible ? setVisibilityTriggered(true) : null)}>
             {({isVisible}) =>
                 <div id="aboutMeBackground">
                     <Slide direction="left" in={isVisible} timeout={1000}>

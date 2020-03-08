@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -18,6 +18,8 @@ import ReactGA from 'react-ga';
 import VisibilitySensor from "react-visibility-sensor";
 
 export const Projects: React.FC = () => {
+    const [visibilityTriggered, setVisibilityTriggered] = useState(false);
+
     const useStyles = makeStyles(theme => ({
         card: {
             right: 0,
@@ -39,7 +41,8 @@ export const Projects: React.FC = () => {
     const classes = useStyles();
 
     return (
-        <VisibilitySensor partialVisibility>
+        <VisibilitySensor partialVisibility active={!visibilityTriggered} delayedCall
+                          onChange={(isVisible => isVisible ? setVisibilityTriggered(true) : null)}>
             {({isVisible}) =>
                 <div id="Projects">
                     <Typography variant="h2" color="textPrimary" align={"center"}>

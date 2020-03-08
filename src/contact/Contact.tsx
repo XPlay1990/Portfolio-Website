@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Box, List, ListItem, ListItemIcon, ListItemText, ListSubheader, Slide} from "@material-ui/core";
 import linkedInIcon from "../resources/contact/Linkedin.png";
 import xingIcon from "../resources/contact/Xing.png";
@@ -11,6 +11,7 @@ import {IS_DARK_MODE} from "../config/constants";
 import VisibilitySensor from "react-visibility-sensor";
 
 export const Contact: React.FC = () => {
+    const [visibilityTriggered, setVisibilityTriggered] = useState(false);
 
     const useStyles = makeStyles({
         ContactList: {
@@ -30,7 +31,8 @@ export const Contact: React.FC = () => {
 
 
     return (
-        <VisibilitySensor partialVisibility>
+        <VisibilitySensor partialVisibility active={!visibilityTriggered} delayedCall
+                          onChange={(isVisible => isVisible ? setVisibilityTriggered(true) : null)}>
             {({isVisible}) =>
                 <div id='Contact' style={{
                     margin: 'auto',
