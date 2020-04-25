@@ -111,6 +111,7 @@ export const Navbar: FunctionComponent<{ drawerWidth: number }> =
         }
 
         function changeDarkMode(event: any, isDarkMode: string) {
+            console.log(isDarkMode)
             setIsDarkMode(isDarkMode);
             localStorage.setItem(IS_DARK_MODE, isDarkMode);
             window.location.reload();

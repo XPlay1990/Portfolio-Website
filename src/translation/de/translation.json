@@ -22,6 +22,9 @@
   },
   "projects": {
     "title": "Projekte",
+    "w3datalyzer": {
+      "text": "Auswertung und visuelle Präsentation von Daten des Spiels \"Warcraft 3\"."
+    },
     "qd": {
       "text": "Seite zur Verwaltung sogenannter \"EDI-Verbindungen\" inklusive Statistiken, Nutzerverwaltung, Rechte-System, Excel-Export und vieles mehr."
     },

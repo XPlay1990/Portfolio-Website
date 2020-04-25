@@ -11,6 +11,7 @@ import LinkIcon from '@material-ui/icons/Link';
 import ComportTool from "../resources/projects/ComportTool.png";
 import PyQtGraph from "../resources/projects/PyQtGraph_3D.png";
 import QDPortal from "../resources/projects/QD_Portal.png";
+import W3Datalyzer from "../resources/projects/W3Datalyzer.png";
 import KlimaComfort from "../resources/projects/klima-comfort.jpg";
 import {Grid, Grow} from "@material-ui/core";
 import {Trans} from "react-i18next";
@@ -49,6 +50,41 @@ export const Projects: React.FC = () => {
                         <Trans i18nKey={`projects.title`}/>
                     </Typography>
                     <Grid container spacing={1} style={{margin: 'auto', width: '80%'}}>
+                        <Grid item md={6}>
+                            <Grow in={isVisible} timeout={1000}>
+                                <Card className={classes.card}>
+                                    <CardHeader
+                                        title="w3datalyzer"
+                                        subheader="React, Typescript, Chart.js"
+                                    />
+                                    <ReactGA.OutboundLink eventLabel="Projects_w3datalyzer" to="http://w3datalyzer.com"
+                                                          target="_blank" rel="noopener noreferrer">
+                                        <CardMedia
+                                            className={classes.media}
+                                            image={W3Datalyzer}
+                                            title="w3datalyzer"
+                                        />
+                                    </ReactGA.OutboundLink>
+                                    <CardContent>
+                                        <Typography variant="body2" color="textSecondary" component="p">
+                                            <ReactGA.OutboundLink eventLabel="Projects_w3datalyzer"
+                                                                  to="http://w3datalyzer.com">www.w3datalyzer.com</ReactGA.OutboundLink>
+                                            <br/>
+                                            <Trans i18nKey={`projects.w3datalyzer.text`}/>
+                                        </Typography>
+                                    </CardContent>
+                                    <CardActions disableSpacing>
+                                        <ReactGA.OutboundLink eventLabel="Projects_w3datalyzer"
+                                                              to="http://w3datalyzer.com"
+                                                              target="_blank" rel="noopener noreferrer">
+                                            <IconButton aria-label="link">
+                                                <LinkIcon/>
+                                            </IconButton>
+                                        </ReactGA.OutboundLink>
+                                    </CardActions>
+                                </Card>
+                            </Grow>
+                        </Grid>
                         <Grid item md={6}>
                             <Grow in={isVisible} timeout={1000}>
                                 <Card className={classes.card}>

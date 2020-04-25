@@ -23,6 +23,9 @@
   "projects": {
     "title": "Projects",
     "qd": {
+      "text": "Evaluation and presentation of data for the game \"Warcraft 3\"."
+    },
+    "qd": {
       "text": "Webportal to manage so called \"EDI-Connections\" with statistics, user management, permission management, Excel export and much more."
     },
     "radar": {
