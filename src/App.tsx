@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {withRouter} from 'react-router-dom';
 import './App.css';
 import {AboutMe} from "./aboutMe/AboutMe";
@@ -7,12 +7,13 @@ import {createMuiTheme, makeStyles, responsiveFontSizes, ThemeProvider} from '@m
 import {pdfjs} from 'react-pdf';
 import {Navbar} from "./navbar/Navbar";
 import {CV} from './cv/CV';
-import {CssBaseline, useMediaQuery} from "@material-ui/core";
+import {Box, CssBaseline, useMediaQuery} from "@material-ui/core";
 import {Contact} from "./contact/Contact";
 import ReactGA from 'react-ga';
 import i18next from "i18next";
 import {Prints3D} from "./prints3d/Prints3D";
 import {IS_DARK_MODE} from "./config/constants";
+import {Certificates} from "./certificates/Certificates";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -26,7 +27,10 @@ ReactGA.set({
 
 const drawerWidth = 240;
 
-const App: React.FC = () => {
+function App() {
+    const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+    const [isDarkMode, setIsDarkMode] = React.useState(localStorage.getItem(IS_DARK_MODE) || prefersDarkMode.toString());
+
     const useStyles = makeStyles(theme => ({
         content: {
             flexGrow: 1,
@@ -40,11 +44,9 @@ const App: React.FC = () => {
 
     const classes = useStyles();
 
-    const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-    localStorage.setItem(IS_DARK_MODE, (localStorage.getItem(IS_DARK_MODE) || prefersDarkMode.toString()));
     let theme = createMuiTheme({
         palette: {
-            type: (localStorage.getItem(IS_DARK_MODE) === 'true') ? 'dark' : 'light', // mediaquery on dark theme
+            type: (isDarkMode === 'true') ? 'dark' : 'light', // mediaquery on dark theme
             // primary: {main: blue[500]},
             // secondary: red,
         },
@@ -54,17 +56,18 @@ const App: React.FC = () => {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
-            <Navbar drawerWidth={drawerWidth}/>
+            <Navbar drawerWidth={drawerWidth} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
             <main className={classes.content}>
                 <div className={classes.toolbar}/>
                 <AboutMe/>
                 <CV/>
                 <Projects/>
-                <Contact/>
+                {/*<Certificates/>*/}
                 <Prints3D/>
+                <Contact/>
             </main>
         </ThemeProvider>
     );
-};
+}
 
 export default withRouter(App);
