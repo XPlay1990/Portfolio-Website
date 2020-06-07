@@ -12,8 +12,8 @@
     },
     "darkModeToggle": {
       "title": "Dark-Mode",
-      "dark": "Dunkel",
-      "bright": "Hell"
+      "dark": "Dark",
+      "bright": "Bright"
     }
   },
   "aboutme": {
