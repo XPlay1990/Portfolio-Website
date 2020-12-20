@@ -28,6 +28,7 @@ export const Prints3D: React.FC = () => {
                                     />
                                     <iframe
                                         title={"me"}
+                                        loading={"lazy"}
                                         src="https://myhub.autodesk360.com/ue2de58ca/shares/public/SH56a43QTfd62c1cd968d4bc6f04d342da23?mode=embed"
                                         width="100%" height="480" allowFullScreen={true} frameBorder="0"/>
                                 </Card>
@@ -42,6 +43,7 @@ export const Prints3D: React.FC = () => {
                                     />
                                     <iframe
                                         title={"headset"}
+                                        loading={"lazy"}
                                         src="https://myhub.autodesk360.com/ue2de58ca/shares/public/SH56a43QTfd62c1cd9683f5f475ce888bb67?mode=embed"
                                         width="100%" height="480" allowFullScreen={true}
                                         // webkitAllowFullScreen={true}
@@ -59,6 +61,7 @@ export const Prints3D: React.FC = () => {
                                     />
                                     <iframe
                                         title={"lampshade"}
+                                        loading={"lazy"}
                                         src="https://myhub.autodesk360.com/ue2de58ca/shares/public/SH7f1edQT22b515c761e8b3405b7a7a5e935?mode=embed"
                                         width="100%" height="480" allowFullScreen={true} frameBorder="0"/>
                                 </Card>
@@ -73,6 +76,7 @@ export const Prints3D: React.FC = () => {
                                     />
                                     <iframe
                                         title={"PA Wood"}
+                                        loading={"lazy"}
                                         src="https://myhub.autodesk360.com/ue2de58ca/shares/public/SH56a43QTfd62c1cd968e1d2ce80f6922135?mode=embed"
                                         width="100%" height="480" allowFullScreen={true} frameBorder="0"/>
                                 </Card>

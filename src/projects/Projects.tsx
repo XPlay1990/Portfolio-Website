@@ -51,6 +51,39 @@ export const Projects: React.FC = () => {
                     </Typography>
                     <Grid container spacing={1} style={{margin: 'auto', width: '80%'}}>
                         <Grid item md={6}>
+                            <Grow in={isVisible} timeout={4000}>
+                                <Card className={classes.card}>
+                                    <CardHeader
+                                        title="Klima-Comfort"
+                                        subheader="Wordpress"
+                                    />
+                                    <ReactGA.OutboundLink eventLabel="Projects_Klima-Comfort"
+                                                          to="https://klima-comfort.pl" target="_blank"
+                                                          rel="noopener noreferrer">
+                                        <CardMedia
+                                            className={classes.media}
+                                            image={KlimaComfort}
+                                            title="Klima-Comfort"
+                                        />
+                                    </ReactGA.OutboundLink>
+                                    <CardContent>
+                                        <Typography variant="body2" color="textSecondary" component="p">
+                                            <Trans i18nKey={`projects.klimaComfort.text`}/>
+                                        </Typography>
+                                    </CardContent>
+                                    <CardActions disableSpacing>
+                                        <ReactGA.OutboundLink eventLabel="Projects_Comport-Tool"
+                                                              to="https://klima-comfort.pl" target="_blank"
+                                                              rel="noopener noreferrer">
+                                            <IconButton aria-label="link">
+                                                <LinkIcon/>
+                                            </IconButton>
+                                        </ReactGA.OutboundLink>
+                                    </CardActions>
+                                </Card>
+                            </Grow>
+                        </Grid>
+                        <Grid item md={6}>
                             <Grow in={isVisible} timeout={1000}>
                                 <Card className={classes.card}>
                                     <CardHeader
@@ -179,39 +212,6 @@ export const Projects: React.FC = () => {
                                         <ReactGA.OutboundLink eventLabel="Projects_Comport-Tool"
                                                               to="https://github.com/XPlay1990/Comport-Tool"
                                                               target="_blank"
-                                                              rel="noopener noreferrer">
-                                            <IconButton aria-label="link">
-                                                <LinkIcon/>
-                                            </IconButton>
-                                        </ReactGA.OutboundLink>
-                                    </CardActions>
-                                </Card>
-                            </Grow>
-                        </Grid>
-                        <Grid item md={6}>
-                            <Grow in={isVisible} timeout={4000}>
-                                <Card className={classes.card}>
-                                    <CardHeader
-                                        title="Klima-Comfort"
-                                        subheader="Wordpress"
-                                    />
-                                    <ReactGA.OutboundLink eventLabel="Projects_Klima-Comfort"
-                                                          to="https://klima-comfort.pl" target="_blank"
-                                                          rel="noopener noreferrer">
-                                        <CardMedia
-                                            className={classes.media}
-                                            image={KlimaComfort}
-                                            title="Klima-Comfort"
-                                        />
-                                    </ReactGA.OutboundLink>
-                                    <CardContent>
-                                        <Typography variant="body2" color="textSecondary" component="p">
-                                            <Trans i18nKey={`projects.klimaComfort.text`}/>
-                                        </Typography>
-                                    </CardContent>
-                                    <CardActions disableSpacing>
-                                        <ReactGA.OutboundLink eventLabel="Projects_Comport-Tool"
-                                                              to="https://klima-comfort.pl" target="_blank"
                                                               rel="noopener noreferrer">
                                             <IconButton aria-label="link">
                                                 <LinkIcon/>
