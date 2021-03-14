@@ -10,4 +10,4 @@ COPY . ./
 RUN npm run build
 
 FROM bitnami/nginx:latest
-COPY --from=builder /opt/web/build /usr/share/nginx/html
+COPY --from=builder /opt/web/build /app
