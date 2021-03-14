@@ -1,21 +1,17 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {withRouter} from 'react-router-dom';
 import './App.css';
 import {AboutMe} from "./aboutMe/AboutMe";
 import {Projects} from "./projects/Projects";
 import {createMuiTheme, makeStyles, responsiveFontSizes, ThemeProvider} from '@material-ui/core/styles';
-import {pdfjs} from 'react-pdf';
 import {Navbar} from "./navbar/Navbar";
 import {CV} from './cv/CV';
-import {Box, CssBaseline, useMediaQuery} from "@material-ui/core";
+import {CssBaseline, useMediaQuery} from "@material-ui/core";
 import {Contact} from "./contact/Contact";
 import ReactGA from 'react-ga';
 import i18next from "i18next";
 import {Prints3D} from "./prints3d/Prints3D";
 import {IS_DARK_MODE} from "./config/constants";
-import {Certificates} from "./certificates/Certificates";
-
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const ga_TrackerId = 'UA-157113083-1';
 ReactGA.initialize(ga_TrackerId);

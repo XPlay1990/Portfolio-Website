@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Box, Card, IconButton, Tooltip} from "@material-ui/core";
-import {Document, Page} from "react-pdf";
+import {Document, Page} from 'react-pdf/dist/esm/entry.webpack';
 import Lebenslauf from "../resources/cv/Lebenslauf.pdf";
 import CV_en from "../resources/cv/CV_en.pdf";
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
