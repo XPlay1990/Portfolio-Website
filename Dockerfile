@@ -1,4 +1,4 @@
-FROM node:15.11.0-alpine AS builder
+FROM node:alpine AS builder
 
 WORKDIR /opt/web
 COPY package.json package-lock.json ./
@@ -11,3 +11,4 @@ RUN npm run build
 
 FROM bitnami/nginx:latest
 COPY --from=builder /opt/web/build /app
+COPY custom_nginx.conf /opt/bitnami/nginx/conf/server_blocks/

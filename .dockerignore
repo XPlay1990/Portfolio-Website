@@ -3,3 +3,4 @@ build
 .dockerignore
 Dockerfile
 Dockerfile_prod
+.git
