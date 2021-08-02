@@ -1,4 +1,4 @@
-import React, {Dispatch, useState} from 'react';
+import React, {Dispatch} from 'react';
 import {
     AppBar,
     Box,
@@ -34,7 +34,7 @@ import {IS_DARK_MODE} from "../config/constants";
 
 import germanFlag from "../resources/navbar/flags/germany.png"
 import enFlag from "../resources/navbar/flags/united-kingdom.png"
-import {Brightness3, WbSunny, WbSunnyOutlined, WbSunnyRounded, WbSunnySharp, WbSunnyTwoTone} from "@material-ui/icons";
+import {Brightness3, WbSunny} from "@material-ui/icons";
 
 interface Props {
     drawerWidth: number

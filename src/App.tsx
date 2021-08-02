@@ -10,9 +10,9 @@ import {createTheme, CssBaseline, useMediaQuery} from "@material-ui/core";
 import {Contact} from "./contact/Contact";
 import ReactGA from 'react-ga';
 import i18next from "i18next";
+import i18n from "i18next";
 import {Prints3D} from "./prints3d/Prints3D";
 import {IS_DARK_MODE} from "./config/constants";
-import i18n from "i18next";
 
 const ga_TrackerId = 'UA-157113083-1';
 ReactGA.initialize(ga_TrackerId);
@@ -70,7 +70,8 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
-            <Navbar drawerWidth={drawerWidth} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} language={language} changeLanguageToggle={changeLanguageToggle}/>
+            <Navbar drawerWidth={drawerWidth} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} language={language}
+                    changeLanguageToggle={changeLanguageToggle}/>
             <main className={classes.content}>
                 <div className={classes.toolbar}/>
                 <AboutMe/>
