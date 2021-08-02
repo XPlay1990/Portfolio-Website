@@ -56,7 +56,7 @@ function App() {
 
     let theme = createTheme({
         palette: {
-            type: (isDarkMode === 'true') ? 'dark' : 'light', // mediaquery on dark theme
+            type: (isDarkMode === 'false') ? 'light' : 'dark', // mediaquery on dark theme
             // primary: {main: blue[500]},
             // secondary: red,
         },
