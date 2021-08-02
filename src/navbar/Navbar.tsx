@@ -1,4 +1,4 @@
-import React, {Dispatch, FunctionComponent, useState} from 'react';
+import React, {Dispatch, useState} from 'react';
 import {
     AppBar,
     Box,
@@ -26,23 +26,27 @@ import LinkIcon from "@material-ui/icons/Link";
 import {makeStyles} from "@material-ui/core/styles";
 import qdIcon from "../resources/navbar/qd_software.png"
 import {ToggleButton, ToggleButtonGroup} from "@material-ui/lab";
-import i18n from "i18next";
 import {Trans} from "react-i18next";
 import MenuIcon from "@material-ui/icons/Menu";
 import CreateIcon from '@material-ui/icons/Create';
 import ReactGA from 'react-ga';
 import {IS_DARK_MODE} from "../config/constants";
 
+import germanFlag from "../resources/navbar/flags/germany.png"
+import enFlag from "../resources/navbar/flags/united-kingdom.png"
+import {Brightness3, WbSunny, WbSunnyOutlined, WbSunnyRounded, WbSunnySharp, WbSunnyTwoTone} from "@material-ui/icons";
+
 interface Props {
     drawerWidth: number
     isDarkMode: string,
+    language: string,
+    changeLanguageToggle: any,
     setIsDarkMode: Dispatch<string>
 }
 
 export function Navbar(props: Props) {
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
-    const [language, setLanguage] = useState(i18n.language);
     const theme = useTheme();
 
     const useStyles = makeStyles(theme => ({
@@ -100,19 +104,6 @@ export function Navbar(props: Props) {
             category: "Navbar",
             action: divId,
         });
-    }
-
-    function changeLanguageToggle(event: any, selectedLanguage: string) {
-        if (selectedLanguage) {
-            setLanguage(selectedLanguage);
-            i18n.changeLanguage(selectedLanguage);
-            window.location.reload();
-
-            ReactGA.event({
-                category: "ChangeLanguage",
-                action: selectedLanguage,
-            });
-        }
     }
 
     function changeDarkMode(event: any, isDarkMode: string) {
@@ -270,18 +261,18 @@ export function Navbar(props: Props) {
             }}>
                 <Tooltip title={<Trans i18nKey={`navbar.languageToggle.title`}/>}>
                     <ToggleButtonGroup
-                        value={language}
+                        value={props.language}
                         exclusive
                         size="medium"
-                        onChange={changeLanguageToggle}
+                        onChange={props.changeLanguageToggle}
                         aria-label="text alignment"
                         className={classes.ToggleButtonGroup}
                     >
                         <ToggleButton value='de' aria-label="centered">
-                            de
+                            <img src={germanFlag} alt={'de'} width={40}/>
                         </ToggleButton>
                         <ToggleButton value='en' aria-label="centered">
-                            en
+                            <img src={enFlag} alt={'en'} width={40}/>
                         </ToggleButton>
                     </ToggleButtonGroup>
                 </Tooltip>
@@ -295,10 +286,10 @@ export function Navbar(props: Props) {
                         className={classes.ToggleButtonGroup}
                     >
                         <ToggleButton value='true' aria-label="centered">
-                            <Trans i18nKey={`navbar.darkModeToggle.dark`}/>
+                            <Brightness3/>
                         </ToggleButton>
                         <ToggleButton value='false' aria-label="centered">
-                            <Trans i18nKey={`navbar.darkModeToggle.bright`}/>
+                            <WbSunny/>
                         </ToggleButton>
                     </ToggleButtonGroup>
                 </Tooltip>
@@ -358,4 +349,4 @@ export function Navbar(props: Props) {
             </nav>
         </div>
     )
-};
+}
