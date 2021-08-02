@@ -90,16 +90,31 @@ export const Projects: React.FC = () => {
                                         title="w3datalyzer"
                                         subheader="React, Typescript, Chart.js"
                                     />
-                                    <CardMedia
-                                        className={classes.media}
-                                        image={W3Datalyzer}
-                                        title="w3datalyzer"
-                                    />
+                                    <ReactGA.OutboundLink eventLabel="Projects_w3datalyzer" to="https://github.com/XPlay1990/w3datalyzer"
+                                                          target="_blank" rel="noopener noreferrer">
+                                        <CardMedia
+                                            className={classes.media}
+                                            image={W3Datalyzer}
+                                            title="w3datalyzer"
+                                        />
+                                    </ReactGA.OutboundLink>
                                     <CardContent>
                                         <Typography variant="body2" color="textSecondary" component="p">
+                                            <ReactGA.OutboundLink eventLabel="Projects_w3datalyzer"
+                                                                  to="https://github.com/XPlay1990/w3datalyzer">www.w3datalyzer.com</ReactGA.OutboundLink>
+                                            <br/>
                                             <Trans i18nKey={`projects.w3datalyzer.text`}/>
                                         </Typography>
                                     </CardContent>
+                                    <CardActions disableSpacing>
+                                        <ReactGA.OutboundLink eventLabel="Projects_w3datalyzer"
+                                                              to="https://github.com/XPlay1990/w3datalyzer"
+                                                              target="_blank" rel="noopener noreferrer">
+                                            <IconButton aria-label="link">
+                                                <LinkIcon/>
+                                            </IconButton>
+                                        </ReactGA.OutboundLink>
+                                    </CardActions>
                                 </Card>
                             </Grow>
                         </Grid>
