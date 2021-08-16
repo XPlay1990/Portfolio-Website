@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --root-link-color: '';
+  --root-visited-link-color: ''
+}
+
+a {
+  color: var(--root-link-color)
+}
+
+a:visited {
+  color: var(--root-visited-link-color)
+}

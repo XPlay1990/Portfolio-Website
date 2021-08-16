@@ -45,9 +45,6 @@ interface Props {
 }
 
 export function Navbar(props: Props) {
-    const [mobileOpen, setMobileOpen] = React.useState(false);
-
-    const theme = useTheme();
 
     const useStyles = makeStyles(theme => ({
         drawer: {
@@ -59,38 +56,39 @@ export function Navbar(props: Props) {
         },
         drawerPaper: {
             width: props.drawerWidth,
-            // marginTop: 48
         },
         listItemIcon: {
             width: '36px'
         },
         ListItemTextDarkMode: {
-            color: "white"
+            // color: "white"
         },
         ListItemTextBrightMode: {
-            color: "black"
+            // color: "black"
         },
         appBar: {
             [theme.breakpoints.up('sm')]: {
-                width: `calc(100% - ${props.drawerWidth}px)`,
-                marginLeft: props.drawerWidth,
-            },
+                // width: `calc(100% - ${props.drawerWidth}px)`,
+                // marginLeft: props.drawerWidth,
+            }
         },
         menuButton: {
             marginRight: theme.spacing(2),
-            [theme.breakpoints.up('sm')]: {
-                display: 'none',
-            },
+            // [theme.breakpoints.up('sm')]: {
+            //     display: 'none',
+            // },
         },
-        toolbar: (theme.mixins.toolbar as any),
         ToggleButtonGroup: {
             marginLeft: "auto",
             marginRight: "auto",
             marginTop: "10px"
         }
     }));
-
     const classes = useStyles();
+
+    const theme = useTheme();
+
+    const [mobileOpen, setMobileOpen] = React.useState(false);
 
     const breakPointMatches: boolean = useMediaQuery(theme.breakpoints.up('sm'));
 
@@ -124,8 +122,6 @@ export function Navbar(props: Props) {
 
     const drawer = (
         <div>
-            <div className={classes.toolbar}/>
-            <Divider/>
             <List>
                 <ListItem button key='AboutMe' onClick={() => {
                     jumpToDivId('aboutMeBackground')
@@ -142,7 +138,8 @@ export function Navbar(props: Props) {
                     <ListItemIcon><DescriptionIcon/></ListItemIcon>
                     <ListItemText
                         className={localStorage.getItem(IS_DARK_MODE) === 'true' ? classes.ListItemTextDarkMode : classes.ListItemTextBrightMode}
-                        primary={<Trans i18nKey={`navbar.cv`}/>}/>
+                        primary={<Trans i18nKey={`navbar.cv`}/>}
+                    />
                 </ListItem>
                 <ListItem button key='Projekte' onClick={() => {
                     jumpToDivId('Projects')
@@ -299,7 +296,7 @@ export function Navbar(props: Props) {
 
     return (
         <div>
-            <AppBar position="fixed" className={classes.appBar}>
+            <AppBar position="fixed" className={classes.appBar} id={"AppBar"}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -317,35 +314,19 @@ export function Navbar(props: Props) {
                 </Toolbar>
             </AppBar>
             <nav className={classes.drawer} aria-label="mailbox folders">
-                {
-                    breakPointMatches ?
-                        (
-                            <Drawer
-                                classes={{
-                                    paper: classes.drawerPaper,
-                                }}
-                                variant="permanent"
-                                open
-                            >
-                                {drawer}
-                            </Drawer>
-                        ) : (
-                            <Drawer
-                                variant="temporary"
-                                anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                                open={mobileOpen}
-                                onClose={handleDrawerToggle}
-                                classes={{
-                                    paper: classes.drawerPaper,
-                                }}
-                                ModalProps={{
-                                    keepMounted: true, // Better open performance on mobile.
-                                }}
-                            >
-                                {drawer}
-                            </Drawer>
-                        )
-                }
+                <Drawer
+                    variant="temporary"
+                    open={mobileOpen}
+                    onClose={handleDrawerToggle}
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}
+                    ModalProps={{
+                        keepMounted: true, // Better open performance on mobile.
+                    }}
+                >
+                    {drawer}
+                </Drawer>
             </nav>
         </div>
     )

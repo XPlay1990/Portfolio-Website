@@ -46,10 +46,10 @@ function App() {
             flexGrow: 1,
             // padding: theme.spacing(3),
             [theme.breakpoints.up('sm')]: {
-                marginLeft: drawerWidth,
+                // marginLeft: drawerWidth,
             },
         },
-        toolbar: (theme.mixins.toolbar as any),
+        toolbar: (theme.mixins.toolbar as any)
     }));
 
     const classes = useStyles();
@@ -67,10 +67,22 @@ function App() {
         setIsDarkMode(prefersDarkMode.toString())
     }, [prefersDarkMode])
 
+    useEffect(() => {
+        console.log(isDarkMode)
+        if (isDarkMode) {
+            document.documentElement.style.setProperty("--root-link-color", 'hsl(210,100%,50%)')
+            document.documentElement.style.setProperty("--root-visited-link-color", 'hsl(210,40%,50%)')
+        } else {
+            document.documentElement.style.setProperty("--root-link-color", '')
+            document.documentElement.style.setProperty("--root-visited-link-color", '')
+        }
+    }, [isDarkMode])
+
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
-            <Navbar drawerWidth={drawerWidth} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} language={language}
+            <Navbar drawerWidth={drawerWidth} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}
+                    language={language}
                     changeLanguageToggle={changeLanguageToggle}/>
             <main className={classes.content}>
                 <div className={classes.toolbar}/>

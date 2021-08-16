@@ -21,10 +21,10 @@ export const Contact: React.FC = () => {
             width: '36px'
         },
         ListItemTextDarkMode: {
-            color: "white"
+            // color: "white"
         },
         ListItemTextBrightMode: {
-            color: "black"
+            // color: "black"
         }
     });
     const classes = useStyles();
