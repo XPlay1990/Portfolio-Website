@@ -73,6 +73,8 @@ export const CV: React.FC = () => {
                             <Document
                                 file={Lebenslauf}
                                 onLoadSuccess={onDocumentLoadSuccess}
+                                onLoadError={(error: any) => console.log(error)}
+                                onSourceError={(error: any) => console.log(error)}
                             >
                                 <Page
                                     pageNumber={pageNumber}
@@ -90,6 +92,8 @@ export const CV: React.FC = () => {
                             <Document
                                 file={CV_en}
                                 onLoadSuccess={onDocumentLoadSuccess}
+                                onLoadError={(error: any) => console.log(error)}
+                                onSourceError={(error: any) => console.log(error)}
                             >
                                 <Page
                                     pageNumber={pageNumber}
