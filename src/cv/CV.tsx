@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Box, Card, IconButton, Tooltip} from "@material-ui/core";
 import {Document, Page} from 'react-pdf/dist/esm/entry.webpack';
 import Lebenslauf from "../resources/cv/Lebenslauf.pdf";
@@ -9,7 +9,6 @@ import "./cv.css"
 import Typography from "@material-ui/core/Typography";
 import i18n from "i18next";
 
-
 interface PDFDocumentProxy {
     numPages: number
 }
@@ -17,17 +16,11 @@ interface PDFDocumentProxy {
 export const CV: React.FC = () => {
     const [pagesTotal, setPagesTotal] = useState(2);
     const [pageNumber, setPageNumber] = useState(1);
+    const [pdfWidth, setPdfWidth] = useState((window.innerWidth - 240) * 0.6)
 
-    function getContainerWidth(): number {
-        // const containerElement = document.getElementsByClassName('CVContainer')[0] as HTMLElement;
-        // console.log(containerElement)
-        // if (containerElement) {
-        //     return containerElement.clientWidth
-        // } else {
-        //     return 600
-        // }
-        return (window.innerWidth - 240) * 0.6
-    }
+    useEffect(() => {
+        setPdfWidth(document.getElementById("PdfContainer")?.clientWidth || (window.innerWidth - 240) * 0.6)
+    }, [])
 
     function onDocumentLoadSuccess(pdf: PDFDocumentProxy): void {
         setPagesTotal(pdf.numPages)
@@ -48,11 +41,6 @@ export const CV: React.FC = () => {
     return (
         <div id='CV'>
             <Card className="CVContainer">
-                {/*<Document file={Lebenslauf}>*/}
-                {/*    <Outline/>*/}
-                {/*    <Page pageNumber={1} width={900}/>*/}
-                {/*    <Page pageNumber={2}/>*/}
-                {/*</Document>*/}
                 <Box
                     style={{backgroundColor: '#3f51b5', height: 48, display: "flex", flexDirection: "row"}}>
                     <Tooltip title={"Zurück"}>
@@ -69,7 +57,7 @@ export const CV: React.FC = () => {
 
                 {
                     i18n.language === 'de' || i18n.language === 'de-DE' ? (
-                        <div>
+                        <div id={"PdfContainer"}>
                             <Document
                                 file={Lebenslauf}
                                 onLoadSuccess={onDocumentLoadSuccess}
@@ -79,7 +67,7 @@ export const CV: React.FC = () => {
                                 <Page
                                     pageNumber={pageNumber}
                                     // height={window.screen.height-48}
-                                    width={getContainerWidth()}
+                                    width={pdfWidth}
                                     renderAnnotationLayer={false}
                                 />
                             </Document>
@@ -88,7 +76,7 @@ export const CV: React.FC = () => {
                             </Typography>
                         </div>
                     ) : (
-                        <div>
+                        <div id={"PdfContainer"}>
                             <Document
                                 file={CV_en}
                                 onLoadSuccess={onDocumentLoadSuccess}
@@ -98,7 +86,7 @@ export const CV: React.FC = () => {
                                 <Page
                                     pageNumber={pageNumber}
                                     // height={window.screen.height-48}
-                                    width={getContainerWidth()}
+                                    width={pdfWidth}
                                     renderAnnotationLayer={false}
                                 />
                             </Document>

@@ -68,7 +68,6 @@ function App() {
     }, [prefersDarkMode])
 
     useEffect(() => {
-        console.log(isDarkMode)
         if (isDarkMode) {
             document.documentElement.style.setProperty("--root-link-color", 'hsl(210,100%,50%)')
             document.documentElement.style.setProperty("--root-visited-link-color", 'hsl(210,40%,50%)')
