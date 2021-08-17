@@ -8,6 +8,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import "./cv.css"
 import Typography from "@material-ui/core/Typography";
 import i18n from "i18next";
+import {pdfjs} from 'react-pdf';
 
 interface PDFDocumentProxy {
     numPages: number
@@ -19,6 +20,7 @@ export const CV: React.FC = () => {
     const [pdfWidth, setPdfWidth] = useState((window.innerWidth - 240) * 0.6)
 
     useEffect(() => {
+        pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
         setPdfWidth(document.getElementById("PdfContainer")?.clientWidth || (window.innerWidth - 240) * 0.6)
     }, [])
 
