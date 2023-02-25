@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {withRouter} from 'react-router-dom';
 import './App.css';
 import {AboutMe} from "./aboutMe/AboutMe";
 import {Projects} from "./projects/Projects";
@@ -96,4 +95,4 @@ function App() {
     );
 }
 
-export default withRouter(App);
+export default App;

@@ -11,8 +11,8 @@ export const Prints3D: React.FC = () => {
 
     return (
         <VisibilitySensor partialVisibility active={!visibilityTriggered} delayedCall
-                          onChange={(isVisible => isVisible ? setVisibilityTriggered(true) : null)}>
-            {({isVisible}) =>
+                          onChange={((isVisible: boolean) => isVisible ? setVisibilityTriggered(true) : null)}>
+            {(isVisible: boolean) =>
                 <Box id="Prints3D">
                     <Typography variant="h2" color="textPrimary" align={"center"}>
                         <Trans i18nKey={`prints3D.title`}/>

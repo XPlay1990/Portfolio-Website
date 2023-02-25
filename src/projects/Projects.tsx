@@ -43,8 +43,8 @@ export const Projects: React.FC = () => {
 
     return (
         <VisibilitySensor partialVisibility active={!visibilityTriggered} delayedCall
-                          onChange={(isVisible => isVisible ? setVisibilityTriggered(true) : null)}>
-            {({isVisible}) =>
+                          onChange={((isVisible:boolean) => isVisible ? setVisibilityTriggered(true) : null)}>
+            {(isVisible:boolean) =>
                 <div id="Projects">
                     <Typography variant="h2" color="textPrimary" align={"center"}>
                         <Trans i18nKey={`projects.title`}/>

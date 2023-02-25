@@ -25,8 +25,8 @@ export const AboutMe: React.FC = () => {
 
     return (
         <VisibilitySensor partialVisibility active={!visibilityTriggered} delayedCall
-                          onChange={(isVisible => isVisible ? setVisibilityTriggered(true) : null)}>
-            {({isVisible}) =>
+                          onChange={((isVisible:boolean) => isVisible ? setVisibilityTriggered(true) : null)}>
+            {(isVisible:boolean) =>
                 <div id="aboutMeBackground">
                     <Slide direction="left" in={isVisible} timeout={1000} mountOnEnter unmountOnExit>
                         <Card className="aboutMeCard">
